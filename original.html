@@ -155,13 +155,14 @@ To use:
 </textarea>
   <div class="markdown"></div>
   <script>
-    var ein = document.querySelector(".plain");
-    var eout = document.querySelector(".markdown");
-    function update() {
-      eout.innerHTML = markdown(ein.value);
+    async function request() {
+      var response = await fetch('/README.md')
+      return response.text()
     }
-    ein.addEventListener("input", update);
-    update();
+    
+    var ein = request()
+    var out = document.querySelector(".markdown");
+    out.innerHTML = markdown(ein);
   </script>
 </body>
 </html>
