@@ -1,86 +1,107 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <script src="/drawdown.js"></script>
-  
-  <style>
-    * {
-      box-sizing: border-box;
-    }
-    html, body {
-      width: 100%;
-      height: 100%;
-      padding: 0;
-      margin: 0;
-      overflow: hidden;
-    }
-    hr {
-      margin: 1em 0;
-      border: 0;
-      border-bottom: 1px solid #ccc;
-    }
-    blockquote {
-      margin-left: 0;
-      padding: 0.5em 0 0.5em 2em;
-      border-left: 3px solid rgb(211, 218, 234);
-    }
-    li, code {
-      margin: 0.4em 0;
-    }
-    p {
-      margin: 0.9em 0;
-    }
-    code {
-      background: rgba(211, 218, 234, 0.25);
-    }
-    pre > code {
-      display: block;
-      padding: 0.5em 4em;
-    }
-    table {
-      border-spacing: 0;
-      border-collapse: collapse;
-    }
-    td {
-      padding: 4px 8px;
-    }
-    tr:nth-child(2n) {
-      background: #f3f3f3;
-    }
-    th {
-      border-bottom: 1px solid #aaa;
-    }
-    img {
-      max-width: 96px;
-    }
-    .plain, .markdown {
-      position: absolute;
-      width: 50%;
-      height: 100%;
-      margin: 0;
-    }
-    .plain {
-      border: 0;
-      border-right: 1px solid #000;
-      padding: 12px;
-      font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'source-code-pro', monospace;
-      font-size: 12px;
-      resize: none;
-    }
-    .markdown {
-      left: 50%;
-      padding: 0 0 0 12px;
-      overflow: auto;
-      font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif;
-      font-size: 14px;
-      line-height: 1.3;
-    }
-  </style>
-</head>
-<body>
-  <textarea class="plain">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="/drawdown.js"></script>
+
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+        padding: 0;
+        margin: 0;
+        overflow: hidden;
+      }
+
+      hr {
+        margin: 1em 0;
+        border: 0;
+        border-bottom: 1px solid #ccc;
+      }
+
+      blockquote {
+        margin-left: 0;
+        padding: 0.5em 0 0.5em 2em;
+        border-left: 3px solid rgb(211, 218, 234);
+      }
+
+      li,
+      code {
+        margin: 0.4em 0;
+      }
+
+      p {
+        margin: 0.9em 0;
+      }
+
+      code {
+        background: rgba(211, 218, 234, 0.25);
+      }
+
+      pre>code {
+        display: block;
+        padding: 0.5em 4em;
+      }
+
+      table {
+        border-spacing: 0;
+        border-collapse: collapse;
+      }
+
+      td {
+        padding: 4px 8px;
+      }
+
+      tr:nth-child(2n) {
+        background: #f3f3f3;
+      }
+
+      th {
+        border-bottom: 1px solid #aaa;
+      }
+
+      img {
+        max-width: 96px;
+      }
+
+      .plain,
+      .markdown {
+        position: absolute;
+        width: 50%;
+        height: 100%;
+        margin: 0;
+      }
+
+      .plain {
+        border: 0;
+        border-right: 1px solid #000;
+        padding: 12px;
+        font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'source-code-pro', monospace;
+        font-size: 12px;
+        resize: none;
+      }
+
+      .markdown {
+        left: 50%;
+        padding: 0 0 0 12px;
+        overflow: auto;
+        font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif;
+        font-size: 14px;
+        line-height: 1.3;
+      }
+    </style>
+    <title>drawdown test</title>
+  </head>
+
+  <body>
+    <textarea class="plain">
 # drawdown
 
 ---
@@ -153,16 +174,23 @@ To use:
 
     element.innerHTML = markdown(text);
 </textarea>
-  <div class="markdown"></div>
-  <script>
-    async function request() {
-      var response = await fetch('/README.md')
-      return response.text()
-    }
-    
-    var ein = request()
-    var out = document.querySelector(".markdown");
-    out.innerHTML = markdown(ein);
-  </script>
-</body>
+    <div class="markdown"></div>
+    <script>
+      async function request() {
+        response = await fetch('README.md')
+        return response.text()
+      }
+      request().then(
+        (value) => {
+          let ein = document.querySelector(".plain").value;
+          let eout = document.querySelector(".markdown");
+          eout.innerHTML = markdown(ein);
+        },
+        (failed) => {
+
+        }
+      )
+    </script>
+  </body>
+
 </html>
