@@ -74,6 +74,8 @@
 
     src = '\n' + src + '\n';
 
+    replace(/\r\n/g, '\n');
+
     replace(rx_lt, '&lt;');
     replace(rx_gt, '&gt;');
     replace(rx_space, '  ');

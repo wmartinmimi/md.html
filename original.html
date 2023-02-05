@@ -184,8 +184,9 @@ To use:
       request().then(
         (value) => {
           let ein = document.querySelector(".plain").value;
+          ein = value
           let eout = document.querySelector(".markdown");
-          eout.innerHTML = markdown(ein);
+          eout.innerHTML = markdown('' + ein);
         },
         (failed) => {
 
