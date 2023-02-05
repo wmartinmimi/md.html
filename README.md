@@ -38,6 +38,9 @@ Fenced code blocks
 
 [Links](https://github.com/adamvleggett/drawdown)
 
+[home link](/parent/lol.md)
+[relative link](parent/relative.md)
+
 Images:
 
 ![Images](https://img.icons8.com/ios/452/stack-of-photos.png)

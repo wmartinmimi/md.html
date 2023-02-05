@@ -83,16 +83,59 @@
       // namespace issue
       parser = markdown
 
-      function request(callback) {
+      function request(url, callback) {
         $.ajax({
-          url: 'README.md',
+          url: url,
           success: callback
         })
       }
 
-      request((markdown) => {
-        $('#markdown').html(parser(markdown))
-      })
+      function getmd(url) {
+        request(url, (markdown) => {
+        $(document).ready(() => {
+          $('#markdown').html(parser(markdown))
+          $('#markdown').ready(() => {
+            $('a[href]').click(function (e) {
+              var link = $(this).attr('href')
+              let isSameDomain = !(link.startsWith("http://") || link.startsWith("https://"))
+              if (!isSameDomain) {
+                return
+              }
+              let ismd = link.endsWith(".md") || link.endsWith(".markdown")
+              if (!ismd) {
+                return
+              }
+              let parent = link.substring(0, link.lastIndexOf("/"))
+              console.log(parent)
+              if (parent.startsWith("/")) {
+                pwd = parent
+              } else {
+                pwd += parent
+              }
+              let parts = pwd.split("/")
+              for (i = 0; i < parts.length; i++) {
+                if (parts[i] === "."){
+                  parts[i] = ""
+                } else if (parts[i] ==="..") {
+                  parts[i] = ""
+                  parts[i - 1] = ""
+                }
+              }
+              pwd = "/"
+              for (i in parts) {
+                pwd += parts[i]
+              }
+              e.preventDefault()
+              getmd(link)
+            })
+          })
+        })
+      })  
+      }
+
+      let pwd = "/"
+
+      getmd("README.md")
     </script>
   </body>
 
