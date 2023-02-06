@@ -16,6 +16,7 @@
         --table-color: #aaaaaa;
         --main-bg-color: #ffffff;
         --link-color: #1671dc;
+        --inline-code-color: #eff1f3;
         color: #24292f;
       }
 
@@ -27,6 +28,7 @@
           --row-2n-color: #161b22;
           --table-color: #aaaaaa;
           --main-bg-color: #0d1117;
+          --inline-code-color: #343941;
           color: #c9d1d9;
         }
       }
@@ -66,12 +68,17 @@
       }
 
       code {
-        background: var(--code-color);
+        background-color: var(--inline-code-color);
+        padding: 3pt;
+        padding-left: 5pt;
+        padding-right: 5pt;
+        border-radius: 5pt;
       }
 
       pre>code {
         display: block;
         padding: 0.5em 4em;
+        background: var(--code-color);
       }
 
       table {
