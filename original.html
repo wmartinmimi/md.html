@@ -8,16 +8,24 @@
     <script src="drawdown.js"></script>
 
     <style>
+      * {
+        --hr-color: #cccccc;
+        --quote-line-color: #d3daea;
+        --code-color: #d3daea40;
+        --row-2n-color: #f3f3f3;
+        --table-color: #aaaaaa;
+      }
+
       hr {
         margin: 1em 0;
         border: 0;
-        border-bottom: 1px solid #ccc;
+        border-bottom: 3pt solid var(--hr-color);
       }
 
       blockquote {
         margin-left: 0;
         padding: 0.5em 0 0.5em 2em;
-        border-left: 3px solid #d3daea;
+        border-left: 3px solid var(--quote-line-color);
       }
 
       li,
@@ -30,7 +38,7 @@
       }
 
       code {
-        background: #d3daea40;
+        background: var(--code-color);
       }
 
       pre>code {
@@ -48,11 +56,11 @@
       }
 
       tr:nth-child(2n) {
-        background: #f3f3f3;
+        background: var(--row-2n-color);
       }
 
       th {
-        border-bottom: 1px solid #aaa;
+        border-bottom: 1px solid var(--table-color);
       }
 
       #markdown {
