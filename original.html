@@ -14,6 +14,35 @@
         --code-color: #d3daea40;
         --row-2n-color: #f3f3f3;
         --table-color: #aaaaaa;
+        background-color: #ffffff;
+        --link-color: #1671dc;
+        --used-link-color: ;
+        color: #24292f;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        * {
+          --hr-color: #30363d;
+          --quote-line-color: #30363d;
+          --code-color: #161b22;
+          --row-2n-color: #161b22;
+          --table-color: #aaaaaa;
+          background-color: #0d1117;
+          color: #c9d1d9;
+        }
+      }
+
+      a {
+        color: var(--link-color);
+        text-decoration: none;
+      }
+
+      a:visited {
+        color: var(--used-link-color);
+      }
+
+      a:hover {
+        text-decoration-line: underline;
       }
 
       hr {
@@ -56,7 +85,7 @@
       }
 
       tr:nth-child(2n) {
-        background: var(--row-2n-color);
+        background-color: var(--row-2n-color);
       }
 
       th {
@@ -85,7 +114,7 @@
         text = response.text();
 
         return text
-      } 
+      }
 
       function checkPath(path) {
         // Make sure it points to a markdown file 
