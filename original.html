@@ -9,19 +9,23 @@
 
     <style>
       * {
-        box-sizing: border-box;
+        --hr-color: #cccccc;
+        --quote-line-color: #d3daea;
+        --code-color: #d3daea40;
+        --row-2n-color: #f3f3f3;
+        --table-color: #aaaaaa;
       }
 
       hr {
         margin: 1em 0;
         border: 0;
-        border-bottom: 1px solid #ccc;
+        border-bottom: 3pt solid var(--hr-color);
       }
 
       blockquote {
         margin-left: 0;
         padding: 0.5em 0 0.5em 2em;
-        border-left: 3px solid rgb(211, 218, 234);
+        border-left: 3px solid var(--quote-line-color);
       }
 
       li,
@@ -34,7 +38,7 @@
       }
 
       code {
-        background: rgba(211, 218, 234, 0.25);
+        background: var(--code-color);
       }
 
       pre>code {
@@ -52,26 +56,19 @@
       }
 
       tr:nth-child(2n) {
-        background: #f3f3f3;
+        background: var(--row-2n-color);
       }
 
       th {
-        border-bottom: 1px solid #aaa;
-      }
-
-      img {
-        max-width: 96px;
+        border-bottom: 1px solid var(--table-color);
       }
 
       #markdown {
-        position: absolute;
-        width: 100%;
-        height: 100%;
         margin: 0;
-        padding: 0 0 0 12px;
+        padding: 0.5em;
         overflow: auto;
         font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif;
-        font-size: 14px;
+        font-size: 1em;
         line-height: 1.3;
       }
     </style>
