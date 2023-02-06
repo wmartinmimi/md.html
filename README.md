@@ -8,6 +8,8 @@ A markdown viewer written as html to view markdown files in a browser
 
 Tiny but reliable Markdown to HTML conversion in JavaScript
 
+$$c = \\pm\\sqrt{a^2 + b^2}$$
+
 Supported Markdown features:
 
 #### Headings
@@ -64,6 +66,7 @@ These are the supported features:
 - Subscript
 - Horizontal rule
 - Tables
+- Inline math equations
 
 Unsupported Markdown features at this time:
 
@@ -71,7 +74,6 @@ Unsupported Markdown features at this time:
 - Definition lists
 - Footnotes
 - Twitter/Facebook/YouTube embed
-- Inline math equations
 
 To use:
 
