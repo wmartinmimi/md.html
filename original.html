@@ -4,19 +4,25 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    
+
     <!--drawdown | markdown rendering-->
     <script src="drawdown.js"></script>
 
     <!--katex | latex rendering-->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css" integrity="sha384-vKruj+a13U8yHIkAyGgK1J3ArTLzrFGBbBc0tDp4ad/EyewESeXE/Iv67Aj8gKZ0" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.js" integrity="sha384-PwRUT/YqbnEjkZO0zZxNqcxACrXe+j766U2amXcgMg5457rve2Y7I6ZJSm2A0mS4" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css"
+      integrity="sha384-vKruj+a13U8yHIkAyGgK1J3ArTLzrFGBbBc0tDp4ad/EyewESeXE/Iv67Aj8gKZ0" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.js"
+      integrity="sha384-PwRUT/YqbnEjkZO0zZxNqcxACrXe+j766U2amXcgMg5457rve2Y7I6ZJSm2A0mS4"
+      crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/contrib/auto-render.min.js"
+      integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+      crossorigin="anonymous"></script>
 
     <style>
       * {
         --hr-color: #cccccc;
         --quote-line-color: #d3daea;
+        --quote-text-color: #5a636c;
         --code-color: #d3daea40;
         --row-2n-color: #f3f3f3;
         --table-color: #aaaaaa;
@@ -34,6 +40,7 @@
           --row-2n-color: #161b22;
           --table-color: #aaaaaa;
           --main-bg-color: #0d1117;
+          --quote-text-color: #88919b;
           --inline-code-color: #343941;
           color: #c9d1d9;
         }
@@ -55,13 +62,14 @@
       hr {
         margin: 1em 0;
         border: 0;
-        border-bottom: 3pt solid var(--hr-color);
+        border-bottom: 5px solid var(--hr-color);
       }
 
       blockquote {
         margin-left: 0;
         padding: 0.5em 0 0.5em 2em;
-        border-left: 3px solid var(--quote-line-color);
+        border-left: 5px solid var(--quote-line-color);
+        color: var(--quote-text-color);
       }
 
       li,
@@ -75,10 +83,10 @@
 
       code {
         background-color: var(--inline-code-color);
-        padding: 3pt;
-        padding-left: 5pt;
-        padding-right: 5pt;
-        border-radius: 5pt;
+        padding: 3px;
+        padding-left: 5px;
+        padding-right: 5px;
+        border-radius: 5px;
       }
 
       pre>code {
