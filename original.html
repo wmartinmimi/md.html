@@ -169,6 +169,11 @@
         const markdown = document.querySelector('#markdown');
         markdown.innerHTML = parser(await getText(path));
 
+        // dynamic title
+        document.title = $('h1').first().text();
+
+        
+
         $('a[href]').click(function (e) {
           let link = new URL(this.href);
           // if same domain
