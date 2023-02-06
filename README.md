@@ -38,10 +38,10 @@ Fenced code blocks
 | Cell 4 | Cell 5 | Cell 6 |
 | Cell 7 | Cell 8 | Cell 9 |
 
-[Links](https://github.com/adamvleggett/drawdown)
+[Outside Links](https://github.com/adamvleggett/drawdown)
 
-[home link](?path=parent/lol.md)
-[relative link](?path=parent/relative.md)
+[absolute link](/parent/lol.md)
+[relative link](parent/relative.md)
 
 Images:
 
