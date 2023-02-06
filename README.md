@@ -38,8 +38,8 @@ Fenced code blocks
 
 [Links](https://github.com/adamvleggett/drawdown)
 
-[home link](parent/lol.md)
-[relative link](parent/relative.md)
+[home link](?path=parent/lol.md)
+[relative link](?path=parent/relative.md)
 
 Images:
 

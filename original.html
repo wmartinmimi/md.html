@@ -80,59 +80,47 @@
       // namespace issue
       parser = markdown
 
-      function request(url, callback) {
-        $.ajax({
-          url: url,
-          success: callback
-        })
+      async function getText(path) {
+        response = await fetch(path);
+        text = response.text();
+
+        return text
+      } 
+
+      function checkPath(path) {
+        // Make sure it points to a markdown file 
+        let ismd = path.endsWith(".md") || path.endsWith(".markdown")
+        if (!ismd) { return null }
+
+        return path
       }
 
-      function getmd(url) {
-        request(url, (markdown) => {
-        $(document).ready(() => {
-          $('#markdown').html(parser(markdown))
-          $('#markdown').ready(() => {
-            $('a[href]').click(function (e) {
-              var link = $(this).attr('href')
-              let isSameDomain = !(link.startsWith("http://") || link.startsWith("https://"))
-              if (!isSameDomain) {
-                return
-              }
-              let ismd = link.endsWith(".md") || link.endsWith(".markdown")
-              if (!ismd) {
-                return
-              }
-              let parent = link.substring(0, link.lastIndexOf("/"))
-              console.log(parent)
-              if (parent.startsWith("/")) {
-                pwd = parent
-              } else {
-                pwd += parent
-              }
-              let parts = pwd.split("/")
-              for (i = 0; i < parts.length; i++) {
-                if (parts[i] === "."){
-                  parts[i] = ""
-                } else if (parts[i] ==="..") {
-                  parts[i] = ""
-                  parts[i - 1] = ""
-                }
-              }
-              pwd = "/"
-              for (i in parts) {
-                pwd += parts[i]
-              }
-              e.preventDefault()
-              getmd(link)
-            })
-          })
-        })
-      })  
+      async function getMd() {
+        // Get markdown element
+        const markdown = document.querySelector('#markdown');
+
+        // Gets URL parameters 
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+
+        let path = '';
+
+        // Get URL path parameter 
+        if (urlParams.has('path')) {
+          path = checkPath(urlParams.get('path'));
+        }
+
+        // Check if path is valid 
+        console.log(path);
+        if (path == null) {
+          markdown.innerHTML = parser(await getText('README.md'));
+        } else {
+          markdown.innerHTML = parser(await getText(path));
+        }
       }
 
-      let pwd = "/"
+      getMd();
 
-      getmd("README.md")
     </script>
   </body>
 
