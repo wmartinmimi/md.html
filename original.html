@@ -106,7 +106,7 @@
         const queryString = window.location.search;
         const urlParams = new URLSearchParams(queryString);
 
-        let path = '';
+        let path = null;
 
         // Get URL path parameter 
         if (urlParams.has('path')) {
@@ -115,7 +115,7 @@
 
         // Check if path is valid 
         console.log(path);
-        if (path == null) {
+        if (path === null) {
           markdown.innerHTML = parser(await getText('README.md'));
         } else {
           markdown.innerHTML = parser(await getText(path));
