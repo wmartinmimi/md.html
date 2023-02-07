@@ -140,12 +140,12 @@
         }
       }
 
-      function checkPath(path) {
-        // Make sure it points to a markdown file 
-        let ismd = path.endsWith(".md") || path.endsWith(".markdown")
-        if (!ismd) { return null }
-
-        return path
+      // Make sure it points to a markdown file
+      function isPathMd(path) {
+        if (path.endsWith(".md") || path.endsWith(".markdown")) {
+          return path;
+        }
+        return null;
       }
 
       function getQueryPath() {
@@ -157,7 +157,7 @@
 
         // Get URL path parameter 
         if (urlParams.has('path')) {
-          path = checkPath(urlParams.get('path'));
+          path = isPathMd(urlParams.get('path'));
         }
 
         // if empty: path -> null
@@ -179,7 +179,7 @@
             return
           }
           // if markdown
-          if (!checkPath(link.pathname)) {
+          if (!isPathMd(link.pathname)) {
             return
           }
           // open markdown
