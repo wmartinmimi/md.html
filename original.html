@@ -134,11 +134,9 @@
       renderLatex = renderMathInElement
 
       async function getText(path) {
-        let response = fetch(path);
+        let response = await fetch(path);
         if (response.ok) {
-          return response.text();
-        } else {
-          return null;
+          return await response.text();
         }
       }
 
@@ -166,7 +164,7 @@
         return path
       }
 
-      async function getMd(path) {
+      async function renderMd(path) {
         // Get markdown element
         const markdown = document.querySelector('#markdown');
         markdown.innerHTML = parser(await getText(path));
@@ -192,17 +190,22 @@
         renderLatex(document.body);
       }
 
-      let path = getQueryPath();
-      if (path === null) {
-        let response = fetch('README.md');
-        if (response.ok) {
-          getMd('README.md');
+      async function main() {
+        let path = getQueryPath();
+        if (path === null) {
+          let response = await fetch('README.md');
+          if (response.ok) {
+            renderMd('README.md');
+          } else {
+            renderMd('index.md');
+          }
         } else {
-          getMd('index.md')
+          renderMd(path);
         }
-      } else {
-        getMd(path);
       }
+      main();
+
+
     </script>
   </body>
 
