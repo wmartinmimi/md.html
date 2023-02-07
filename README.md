@@ -1,18 +1,14 @@
 # md.html
 
-A markdown viewer written as html to view markdown files in a browser
+A markdown viewer written as html to view markdown files in a browser.
 
-# drawdown
+Simple and easy to deploy.
 
 ---
 
-Tiny but reliable Markdown to HTML conversion in JavaScript
-
-$$c = \\pm\\sqrt{a^2 + b^2}$$
-
 Supported Markdown features:
 
-#### Headings
+## Headings
 
 Inline styles such as **bold**, *italic*, ***both***, ~~strikethrough~~, `monospace`, --subscript--, and ^^superscript^^.
 
@@ -24,6 +20,8 @@ Fenced code blocks
 ```
 
     Indented code blocks
+
+$$c = \\pm\\sqrt{a^2 + b^2}$$
 
 1. Numbered lists
   - Unordered lists
@@ -66,7 +64,7 @@ These are the supported features:
 - Subscript
 - Horizontal rule
 - Tables
-- Inline math equations
+- Latex equations
 
 Unsupported Markdown features at this time:
 
@@ -74,7 +72,18 @@ Unsupported Markdown features at this time:
 - Definition lists
 - Footnotes
 - Twitter/Facebook/YouTube embed
+- Inline Latex equations
 
-To use:
+## Usage
 
-    element.innerHTML = markdown(text);
+```
+clone md.html into your markdown server
+open md.html with a modern browser
+it should now display /README.md
+````
+
+## Credits
+
+- drawdown
+- katex
+- jquery
