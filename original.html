@@ -138,6 +138,7 @@
         if (response.ok) {
           return await response.text();
         }
+        return false;
       }
 
       // Make sure it points to a markdown file
@@ -157,11 +158,11 @@
 
         // Get URL path parameter 
         if (urlParams.has('path')) {
-          path = isPathMd(urlParams.get('path'));
+          path = urlParams.get('path');
         }
 
         // if empty: path -> null
-        return path
+        return path;
       }
 
       async function renderMd(path) {
@@ -176,11 +177,11 @@
           let link = new URL(this.href);
           // if same domain
           if (link.hostname !== window.location.hostname) {
-            return
+            return;
           }
           // if markdown
           if (!isPathMd(link.pathname)) {
-            return
+            return;
           }
           // open markdown
           e.preventDefault()
@@ -196,15 +197,29 @@
           let response = await fetch('README.md');
           if (response.ok) {
             renderMd('README.md');
+            return;
           } else {
             renderMd('index.md');
+            return;
           }
         } else {
-          renderMd(path);
+          if (!isPathMd(path)) {
+            // open without saving current url to history
+            window.location.replace(path);
+            return;
+          }
+          let response = await fetch(path);
+          if (response.ok) {
+            renderMd(path);
+            return;
+          } else {
+            // open without saving current url to history
+            window.location.replace(path);
+            return;
+          }
         }
       }
       main();
-
 
     </script>
   </body>
