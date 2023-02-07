@@ -134,10 +134,12 @@
       renderLatex = renderMathInElement
 
       async function getText(path) {
-        response = await fetch(path);
-        text = response.text();
-
-        return text
+        let response = fetch(path);
+        if (response.ok) {
+          return response.text();
+        } else {
+          return null;
+        }
       }
 
       function checkPath(path) {
@@ -192,7 +194,12 @@
 
       let path = getQueryPath();
       if (path === null) {
-        getMd('README.md');
+        let response = fetch('README.md');
+        if (response.ok) {
+          getMd('README.md');
+        } else {
+          getMd('index.md')
+        }
       } else {
         getMd(path);
       }
