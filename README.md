@@ -12,6 +12,8 @@ Supported Markdown features:
 
 Inline styles such as **bold**, *italic*, ***both***, ~~strikethrough~~, `monospace`, --subscript--, and ^^superscript^^.
 
+https://example.com
+
 > Block quotes, including
 > > nested block quotes.
 
