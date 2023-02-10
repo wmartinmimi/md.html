@@ -4,6 +4,14 @@ A markdown viewer written as html to view markdown files in a browser.
 
 Simple and easy to deploy.
 
+## Usage
+
+```
+clone md.html into your markdown server
+open md.html with a modern browser
+the md.html should now display /index.md or /README.md
+```
+
 ---
 
 Supported Markdown features:
@@ -78,14 +86,6 @@ Unsupported Markdown features at this time:
 - Footnotes
 - Twitter/Facebook/YouTube embed
 - Inline Latex equations
-
-## Usage
-
-```
-clone md.html into your markdown server
-open md.html with a modern browser
-it should now display /README.md
-```
 
 ## Credits
 
