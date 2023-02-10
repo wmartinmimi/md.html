@@ -85,7 +85,7 @@ Unsupported Markdown features at this time:
 clone md.html into your markdown server
 open md.html with a modern browser
 it should now display /README.md
-````
+```
 
 ## Credits
 
