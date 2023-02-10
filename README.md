@@ -12,8 +12,6 @@ Supported Markdown features:
 
 Inline styles such as **bold**, *italic*, ***both***, ~~strikethrough~~, `monospace`, --subscript--, and ^^superscript^^.
 
-https://example.com
-
 > Block quotes, including
 > > nested block quotes.
 
@@ -41,7 +39,12 @@ $$c = \\pm\\sqrt{a^2 + b^2}$$
 [Outside Links](https://github.com/adamvleggett/drawdown)
 
 [absolute link](/parent/lol.md)
+
 [relative link](parent/relative.md)
+
+bare url: https://example.com
+
+[empty links]()
 
 Images:
 
