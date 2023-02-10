@@ -89,6 +89,6 @@ it should now display /README.md
 
 ## Credits
 
-- drawdown
-- katex
-- jquery
+- [adamvleggett/drawdown](https://github.com/adamvleggett/drawdown)
+- [KaTeX/KaTeX](https://github.com/KaTeX/KaTeX)
+- [jquery/jquery](https://github.com/jquery/jquery)
