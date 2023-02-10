@@ -99,20 +99,12 @@ function markdown(src) {
 
     // link or image
     replace(rx_link, function (all, p1, p2, p3, p4, p5, p6) {
-        replace(rx_link, function (all, p1, p2, p3, p4, p5, p6) {
-            stash[--si] = p4
-            stash[--si] = p6 ? p6 : p2
-                ? p2
-                    ? p4
-                        ? '<img src="' + p4 + '" alt="' + p3 + '"/>'
-                            ? '<img src="' + p4 + '" alt="' + p3 + '"/>'
-                            : '<a href="' + p4 + '">' + unesc(highlight(p3)) + '</a>'
-                        : p1
-                    : p6;
-                    : '<a href="' + p4 + '">' + unesc(highlight(p3)) + '</a>';
-            return si + '\uf8ff';
-            return si + '\uf8ff';
-        });
+        stash[--si] = p6 ? p6 : p2
+            ? p4
+                ? '<img src="' + p4 + '" alt="' + p3 + '"/>'
+                : p1
+            : '<a href="' + p4 + '">' + unesc(highlight(p3)) + '</a>';
+        return si + '\uf8ff';
     });
 
     replace(rx_url, function (all, p1) {
