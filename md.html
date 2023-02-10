@@ -199,12 +199,12 @@
       async function main() {
         let path = getQueryPath();
         if (path === null) {
-          let response = await fetch('README.md');
+          let response = await fetch('index.md');
           if (response.ok) {
-            renderMd('README.md');
+            renderMd('index.md');
             return;
           } else {
-            renderMd('index.md');
+            renderMd('README.md');
             return;
           }
         } else {
