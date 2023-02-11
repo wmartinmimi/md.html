@@ -2,6 +2,12 @@
 
 Also accessed with ```absolute path```
 
+## Template
+
+Template for server available at [https://github.com/wmartinmimi/md.html-template](https://github.com/wmartinmimi/md.html-template).
+
+Just put your README.md and other .md in.
+
 ## Quick deploy
 
 In your server root:
