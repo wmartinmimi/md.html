@@ -1,6 +1,5 @@
 # md.html
 
-
 ![Images](md.html_logo.png)
 
 A markdown viewer written as html to view markdown files in a browser.
@@ -109,3 +108,4 @@ Unsupported Markdown features at this time:
 - [KaTeX/KaTeX](https://github.com/KaTeX/KaTeX) (MIT License)
 - [jquery/jquery](https://github.com/jquery/jquery) (MIT License)
 - [jsdelivr/jsdelivr](https://github.com/jsdelivr/jsdelivr) (MIT License)
+- [Yukaii/github-highlightjs-themes](https://github.com/Yukaii/github-highlightjs-themes) (MIT License)
