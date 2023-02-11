@@ -1,3 +1,0 @@
-# Relative
-
-everything is relative

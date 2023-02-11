@@ -1,6 +1,6 @@
 # How to use
 
-Also accessed with ```absolute path```
+Also accessed with ```relative path```
 
 ## Template
 

@@ -63,9 +63,9 @@ $$c = \\pm\\sqrt{a^2 + b^2}$$
 
 [Outside Links](https://github.com/adamvleggett/drawdown)
 
-[absolute link](/parent/howtouse.md)
+[absolute link](/parent/absolute.md)
 
-[relative link](parent/relative.md)
+[relative link](parent/howtouse.md)
 
 bare url: https://example.com
 
