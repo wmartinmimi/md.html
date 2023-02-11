@@ -70,7 +70,7 @@ $$c = \\pm\\sqrt{a^2 + b^2}$$
 
 [relative link](parent/howtouse.md)
 
-bare url: https://example.com
+bare url: <https://example.com>
 
 [empty links]()
 

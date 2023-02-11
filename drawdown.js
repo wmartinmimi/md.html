@@ -16,7 +16,7 @@ function markdown(src) {
     var rx_listjoin = /<\/(ol|ul)>\n\n<\1>/g;
     var rx_highlight = /(^|[^A-Za-z\d\\])(([*_])|(~)|(\^)|(--)|(\+\+)|`)(\2?)([^<]*?)\2\8(?!\2)(?=\W|_|$)/g;
     var rx_code = /\n((```|~~~).*\n?([^]*?)\n?\2|((    .*?\n)+))/g;
-    var rx_url = /(https?:\/\/[^\s]+)/g;
+    var rx_url = /(&lt;)?(https?:\/\/[^\s]+)/gm;
     var rx_link = /((!?)\[(.*?)\]\((.*?)( ".*")?\)|\\([\\`*_{}\[\]()#+\-.!~]))/g;
     var rx_table = /\n(( *\|.*?\| *\n)+)/g;
     var rx_thead = /^.*\n( *\|( *\:?-+\:?-+\:? *\|)* *\n|)/;
@@ -115,7 +115,10 @@ function markdown(src) {
         return si + '\uf8ff';
     });
 
-    replace(rx_url, function (all, p1) {
+    replace(rx_url, function (all, p1, p2) {
+        if (p1 === "&lt;") {
+            p1 = p2.substring(0, p2.length - 4);
+        }
         return '<a href="' + p1 + '">' + unesc(highlight(p1)) + '</a>';
     });
 
