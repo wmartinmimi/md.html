@@ -113,6 +113,18 @@ Unsupported Markdown features at this time:
 - Twitter/Facebook/YouTube embed
 - Inline Latex equations
 
+## Issues
+
+Issues and pull requests are always welcome!
+
+You can submit issues the following ways:
+
+- via [Github Issues](https://github.com/wmartinmimi/md.html/issues)
+
+## Contributions
+
+You are welcomed to create pull requests and add/fix features reasonably. :>
+
 ## Credits
 
 - [adamvleggett/drawdown](https://github.com/adamvleggett/drawdown) (MIT License)
