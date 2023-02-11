@@ -1,21 +1,6 @@
 /* https://github.com/Yukaii/github-highlightjs-themes */
 /* MIT License */
 
-code {
-  font-family: 'Courier New', Courier, monospace;
-  background-color: var(--inline-code-color);
-  padding: 3px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-radius: 5px;
-}
-
-pre>code {
-  display: block;
-  padding: 1em;
-  background: var(--code-color);
-}
-
 .hljs-comment,
 .hljs-punctuation {
   color: #6a737d;
