@@ -92,3 +92,4 @@ Unsupported Markdown features at this time:
 - [adamvleggett/drawdown](https://github.com/adamvleggett/drawdown) (MIT License)
 - [KaTeX/KaTeX](https://github.com/KaTeX/KaTeX) (MIT License)
 - [jquery/jquery](https://github.com/jquery/jquery) (MIT License)
+- [jsdelivr/jsdelivr](https://github.com/jsdelivr/jsdelivr) (MIT License)
