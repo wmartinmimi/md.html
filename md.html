@@ -409,6 +409,8 @@
         if (keys.a && keys.s) {
           popup.style.visibility = "visible";
           popupOverlay.style.visibility = "visible";
+          popup.style.top = window.scrollY + 'px';
+          popupOverlay.style.top = window.scrollY + 'px';
           document.querySelector('body').style.overflowY = 'hidden';
           if (filePath == null) {
             saveMarkdown = document.querySelector('#save-md');
