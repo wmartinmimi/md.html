@@ -259,12 +259,47 @@
         return path;
       }
 
+      function getPwd(){
+        let path = getQueryPath();
+        let segs = path.split("/");
+        let pwd = "";
+        for (let i = 0; i < segs.length - 1; i++){
+          pwd += segs[i] + "/";
+        }
+        return pwd;
+      }
+
       async function renderMd(path) {
         // Get markdown element
         $("#markdown").html(parser(await getText(path)));
 
         // dynamic title
         document.title = $("#markdown>h1").first().text();
+
+        for (element of $("img[src]")){
+          let src = $(element).attr("src");
+          try {
+            new URL(src);
+          } catch {
+            if (!src.startsWith("/")){
+              src = getPwd() + src;
+              $(element).attr("src", src);
+            }
+          }
+        }
+
+        for (element of $("a[href]")){
+          console.log(element);
+          let href = $(element).attr("href");
+          try {
+            new URL(href);
+          } catch {
+            if (!href.startsWith("/") && href.length > 0){
+              href = getPwd() + href;
+              $(element).attr("href", href);
+            }
+          }
+        }
 
         $("a[href]").click(function (e) {
           let href = $(this).attr("href");
