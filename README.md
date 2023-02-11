@@ -81,7 +81,9 @@ These are the supported features:
 
 - Block quotes
 - Code blocks
+- Styled code blocks
 - Links
+- Inlined links
 - Images
 - Headings
 - Lists (including lettered lists)
@@ -89,10 +91,17 @@ These are the supported features:
 - Italic
 - Strikethrough
 - Monospace
-- Subscript
 - Horizontal rule
 - Tables
+
+Extra features on md.html:
+
+- Dynamic title based on 1st ```h1``` heading
+- Correct 404 error by displaying the 404.html
+- No need for modified internal links, ```relative/path.md``` and ```/absolute/path.md``` works.
 - Latex equations
+- Subscript
+- SuperScript
 
 Unsupported Markdown features at this time:
 
