@@ -119,4 +119,5 @@ Unsupported Markdown features at this time:
 - [KaTeX/KaTeX](https://github.com/KaTeX/KaTeX) (MIT License)
 - [jquery/jquery](https://github.com/jquery/jquery) (MIT License)
 - [jsdelivr/jsdelivr](https://github.com/jsdelivr/jsdelivr) (MIT License)
+- [highlightjs/highlight.js](https://github.com/highlightjs/highlight.js) (BSD 3-Clause Licensed)
 - [Yukaii/github-highlightjs-themes](https://github.com/Yukaii/github-highlightjs-themes) (MIT License)
