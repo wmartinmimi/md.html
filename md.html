@@ -220,7 +220,9 @@
         <span id="exit-popup">X</span>
         <h3>Save File</h3>
         <div class="buttons-container">
-          <button id="save-md" onclick="downloadFile('markdown')">Markdown</button>
+          <button id="save-md" onclick="downloadFile('markdown')">
+            Markdown
+          </button>
           <button id="save-html" onclick="downloadFile('html')">HTML</button>
           <button id="save-both" onclick="downloadFile('both')">Both</button>
         </div>
@@ -232,9 +234,9 @@
       parser = markdown;
       renderLatex = renderMathInElement;
       let filePath = null;
-      const exitPopup = document.querySelector('#exit-popup');
-      const popup = document.querySelector('.popup-container');
-      const popupOverlay = document.querySelector('#popup-overlay')
+      const exitPopup = document.querySelector("#exit-popup");
+      const popup = document.querySelector(".popup-container");
+      const popupOverlay = document.querySelector("#popup-overlay");
 
       async function getText(path) {
         let response = await fetch(path);
@@ -346,22 +348,41 @@
         }
       }
 
-      function downloadFile(fileType){
-        const downloadLink = document.createElement('a');
-        if (fileType == 'markdown') {
-          if (filePath == null) { return }
+      function getFileName() {
+        if (filePath == null) { return false; }
+
+        let fileName = filePath.replace('.md', '');
+        while (fileName.includes("/")) {
+          fileName = fileName.substring(fileName.indexOf("/") + 1);
+        }
+
+        return fileName
+      }
+
+      function downloadFile(fileType) {
+        const downloadLink = document.createElement("a");
+        if (fileType == "markdown") {
+          if (filePath == null) { return; }
           downloadLink.href = filePath;
-          downloadLink.download = 'MD File.md';
-        } else if (fileType == 'html') {
+          // Name the file 
+          if (getFileName() !== false) { downloadLink.download = `${getFileName()}.md`; }
+          else { downloadLink.download = 'download.md'; }
+
+        } else if (fileType == "html") {
           const html = document.querySelector("html").innerHTML;
-          const dataURI = 'data:text/html,' + encodeURIComponent(html);
+          const dataURI = "data:text/html," + encodeURIComponent(html);
           downloadLink.href = dataURI;
-          downloadLink.download = 'HTML File.html';
-        } else if (fileType == 'both') {
-          downloadFile('markdown');
-          downloadFile('html');
-        } else { return }
-	      downloadLink.click();
+          // Name the file 
+          if (getFileName() !== false) { downloadLink.download = `${getFileName()}.html`; }
+          else { downloadLink.download = 'download.md'; }
+
+        } else if (fileType == "both") {
+          downloadFile("markdown");
+          downloadFile("html");
+
+        } else { return; }
+
+        downloadLink.click();
       }
 
       let keys = {
@@ -369,8 +390,8 @@
         s: false,
       };
 
-      $(document).bind('keydown', function(e) {
-        if(e.ctrlKey && (e.which == 83)) {
+      $(document).bind("keydown", function (e) {
+        if (e.ctrlKey && e.which == 83) {
           e.preventDefault();
         }
       });
@@ -382,9 +403,9 @@
         if (event.key === "s") {
           keys.s = true;
         }
-        if(keys.a && keys.s){
-          popup.style.visibility = 'visible';
-          popupOverlay.style.visibility = 'visible';
+        if (keys.a && keys.s) {
+          popup.style.visibility = "visible";
+          popupOverlay.style.visibility = "visible";
         }
       });
 
@@ -397,10 +418,10 @@
         }
       });
 
-      exitPopup.addEventListener('click', () => {
-        popup.style.visibility = 'hidden';
-        popupOverlay.style.visibility = 'hidden';
-      })
+      exitPopup.addEventListener("click", () => {
+        popup.style.visibility = "hidden";
+        popupOverlay.style.visibility = "hidden";
+      });
 
       main();
     </script>
