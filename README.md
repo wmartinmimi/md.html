@@ -22,9 +22,10 @@ Supported Markdown features:
 
 ## Headings
 
-Inline styles such as **bold**, *italic*, ***both***, ~~strikethrough~~, `monospace`, --subscript--, and ^^superscript^^.
+Inline styles such as **bold**, _italic_, **_both_**, ~~strikethrough~~, `monospace`, --subscript--, and ^^superscript^^.
 
 > Block quotes, including
+>
 > > nested block quotes.
 
 ```
@@ -43,16 +44,18 @@ lineequ()
 
 ```html
 <!--supports multiple languages-->
-<p class='lovely'>hellowrold</p>
+<p class="lovely">helloworld</p>
 ```
 
 $$c = \\pm\\sqrt{a^2 + b^2}$$
 
 1. Numbered lists
-  - Unordered lists
-  - Nested in other lists
-    a. Lettered lists are an extension to the spec.
-    b. They may be useful for legal documents.
+
+- Unordered lists
+- Nested in other lists
+  a. Lettered lists are an extension to the spec.
+  b. They may be useful for legal documents.
+
 2. Another entry in my numbered list.
 
 | Tables | Tables | Tables |
@@ -99,9 +102,9 @@ These are the supported features:
 
 Extra features on md.html:
 
-- Dynamic title based on 1st ```h1``` heading
+- Dynamic title based on 1st `h1` heading
 - Correct 404 error by displaying the 404.html
-- No need for modified internal links, ```relative/path.md``` and ```/absolute/path.md``` works.
+- No need for modified internal links, `relative/path.md` and `/absolute/path.md` works.
 - Subscript
 - SuperScript
 
