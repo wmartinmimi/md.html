@@ -7,7 +7,7 @@ Also accessed with ```absolute path```
 In your server root:
 
 ```bash
-curl -o https://raw.githubusercontent.com/wmartinmimi/md.html/main/md.html
+curl https://raw.githubusercontent.com/wmartinmimi/md.html/main/md.html -o md.html
 ```
 
 Done!
