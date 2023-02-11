@@ -26,6 +26,9 @@
       integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
       crossorigin="anonymous"></script>
 
+    <link rel="stylesheet" href="syntaxhighlight.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+
     <style>
       * {
         --hr-color: #cccccc;
@@ -194,6 +197,7 @@
           link = new URL(window.location.href.replace(window.location.search, '') + '?path=' + link.pathname)
           window.open(link, '_self');
         })
+        hljs.highlightAll();
         renderLatex(document.body);
       }
 

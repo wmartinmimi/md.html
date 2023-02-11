@@ -32,6 +32,19 @@ Fenced code blocks
 
     Indented code blocks
 
+```python
+# highlighted code block
+def lineequ():
+  y = kx + c
+
+lineequ()
+```
+
+```html
+<!--multiple languages-->
+<p class='lovely'>hellowrold</p>
+```
+
 $$c = \\pm\\sqrt{a^2 + b^2}$$
 
 1. Numbered lists

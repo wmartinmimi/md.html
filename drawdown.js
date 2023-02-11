@@ -93,7 +93,15 @@ function markdown(src) {
 
     // code
     replace(rx_code, function (all, p1, p2, p3, p4) {
-        stash[--si] = element('pre', element('code', p3 || p4.replace(/^    /gm, '')));
+        let tag = p1.replace(/\n([ -~]|\n|\t)*/gm, '');
+        let code = null;
+        if (tag.startsWith('```') && !tag.endsWith('```')) {
+            tag = tag.replace(/```/gm, '').trim();
+            code = '<code class="language-' + tag + '">' + p3 + '</code>';
+        } else {
+            code = '<code class="language-plaintext">' + (p3 || p4.replace(/^    /gm, '')) + '</code>';
+        }
+        stash[--si] = element('pre', code);
         return si + '\uf8ff';
     });
 
