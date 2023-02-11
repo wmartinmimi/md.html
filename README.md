@@ -42,7 +42,7 @@ lineequ()
 ```
 
 ```html
-<!--multiple languages-->
+<!--supports multiple languages-->
 <p class='lovely'>hellowrold</p>
 ```
 
