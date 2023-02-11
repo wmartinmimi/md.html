@@ -374,7 +374,7 @@
           downloadLink.href = dataURI;
           // Name the file 
           if (getFileName() !== false) { downloadLink.download = `${getFileName()}.html`; }
-          else { downloadLink.download = 'download.md'; }
+          else { downloadLink.download = 'download.html'; }
 
         } else if (fileType == "both") {
           downloadFile("markdown");
@@ -384,6 +384,7 @@
 
         popup.style.visibility = "hidden";
         popupOverlay.style.visibility = "hidden";
+        document.querySelector('body').style.overflowY = 'visible';
         downloadLink.click();
       }
 
@@ -408,6 +409,7 @@
         if (keys.a && keys.s) {
           popup.style.visibility = "visible";
           popupOverlay.style.visibility = "visible";
+          document.querySelector('body').style.overflowY = 'hidden';
           if (filePath == null) {
             saveMarkdown = document.querySelector('#save-md');
             saveMarkdown.style.backgroundColor = 'var(--quote-text-color)';
@@ -429,6 +431,7 @@
       exitPopup.addEventListener("click", () => {
         popup.style.visibility = "hidden";
         popupOverlay.style.visibility = "hidden";
+        document.querySelector('body').style.overflowY = 'visible';
       });
 
       main();
