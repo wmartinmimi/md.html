@@ -1,5 +1,8 @@
 # md.html
 
+
+![Images](md.html_logo.png)
+
 A markdown viewer written as html to view markdown files in a browser.
 
 Simple and easy to deploy.
@@ -56,7 +59,7 @@ bare url: https://example.com
 
 Images:
 
-![Images](https://img.icons8.com/ios/452/stack-of-photos.png)
+![Images](md.html_logo.png)
 
 ---
 
