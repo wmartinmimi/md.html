@@ -29,3 +29,7 @@ there are 2 options:
 
 - Add links to them in index.md/README.md
 - ```<insert domain>/md.html?path=<absolute path to md>```
+
+Example:
+
+- [https://wmartinmimi.github.io/md.html](https://wmartinmimi.github.io/md.html)
