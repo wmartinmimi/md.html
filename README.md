@@ -6,13 +6,15 @@ A markdown viewer written as html to view markdown files in a browser.
 
 Simple and easy to deploy.
 
-## Usage
+## Quick deploy
 
+In your server root:
+
+```bash
+curl -o https://raw.githubusercontent.com/wmartinmimi/md.html/main/md.html
 ```
-clone md.html into your markdown server
-open md.html with a modern browser
-the md.html should now display /index.md or /README.md
-```
+
+More information on usage can be found [here](/parent/howtouse.md)
 
 ---
 
@@ -61,7 +63,7 @@ $$c = \\pm\\sqrt{a^2 + b^2}$$
 
 [Outside Links](https://github.com/adamvleggett/drawdown)
 
-[absolute link](/parent/lol.md)
+[absolute link](/parent/howtouse.md)
 
 [relative link](parent/relative.md)
 
