@@ -11,7 +11,7 @@ Simple and easy to deploy.
 In your server root:
 
 ```bash
-curl -o https://raw.githubusercontent.com/wmartinmimi/md.html/main/md.html
+curl https://raw.githubusercontent.com/wmartinmimi/md.html/main/md.html -o md.html
 ```
 
 More information on usage can be found [here](/parent/howtouse.md)
