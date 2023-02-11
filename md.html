@@ -208,7 +208,7 @@
 
       .buttons-container button:hover {
         cursor: pointer;
-        background: var(--quote-text-color);
+        background-color: var(--quote-text-color);
       }
     </style>
   </head>
@@ -408,6 +408,12 @@
         if (keys.a && keys.s) {
           popup.style.visibility = "visible";
           popupOverlay.style.visibility = "visible";
+          if (filePath == null) {
+            saveMarkdown = document.querySelector('#save-md');
+            saveMarkdown.style.backgroundColor = 'var(--quote-text-color)';
+            saveMarkdown.style.border = 'none';
+            saveMarkdown.style.cursor = 'not-allowed';
+          }
         }
       });
 
