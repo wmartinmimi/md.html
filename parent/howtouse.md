@@ -1,13 +1,19 @@
 # How to use
 
-Also accessed with ```absolute path```
+Also accessed with ```relative path```
+
+## Template
+
+Template for server available at [https://github.com/wmartinmimi/md.html-template](https://github.com/wmartinmimi/md.html-template).
+
+Just put your README.md and other .md in.
 
 ## Quick deploy
 
 In your server root:
 
 ```bash
-curl -o https://raw.githubusercontent.com/wmartinmimi/md.html/main/md.html
+curl https://raw.githubusercontent.com/wmartinmimi/md.html/main/md.html -o md.html
 ```
 
 Done!
@@ -29,3 +35,7 @@ there are 2 options:
 
 - Add links to them in index.md/README.md
 - ```<insert domain>/md.html?path=<absolute path to md>```
+
+Example:
+
+- [https://wmartinmimi.github.io/md.html](https://wmartinmimi.github.io/md.html)

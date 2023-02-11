@@ -11,10 +11,10 @@ Simple and easy to deploy.
 In your server root:
 
 ```bash
-curl -o https://raw.githubusercontent.com/wmartinmimi/md.html/main/md.html
+curl https://raw.githubusercontent.com/wmartinmimi/md.html/main/md.html -o md.html
 ```
 
-More information on usage can be found [here](/parent/howtouse.md)
+More information on usage can be found [here](parent/howtouse.md)
 
 ---
 
@@ -63,9 +63,9 @@ $$c = \\pm\\sqrt{a^2 + b^2}$$
 
 [Outside Links](https://github.com/adamvleggett/drawdown)
 
-[absolute link](/parent/howtouse.md)
+[absolute link](/parent/absolute.md)
 
-[relative link](parent/relative.md)
+[relative link](parent/howtouse.md)
 
 bare url: https://example.com
 
