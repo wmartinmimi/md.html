@@ -95,13 +95,13 @@ These are the supported features:
 - Monospace
 - Horizontal rule
 - Tables
+- Latex equations
 
 Extra features on md.html:
 
 - Dynamic title based on 1st ```h1``` heading
 - Correct 404 error by displaying the 404.html
 - No need for modified internal links, ```relative/path.md``` and ```/absolute/path.md``` works.
-- Latex equations
 - Subscript
 - SuperScript
 
