@@ -1,7 +1,6 @@
+parser = function(){};
+renderLatex = function(){};
 
-// namespace issue
-parser = markdown
-renderLatex = renderMathInElement
 
 async function getText(path) {
   let response = await fetch(path);
@@ -20,44 +19,71 @@ function isPathMd(path) {
 }
 
 function getQueryPath() {
-  // Gets URL parameters 
+  // Gets URL parameters
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
 
   let path = null;
 
-  // Get URL path parameter 
-  if (urlParams.has('path')) {
-    path = urlParams.get('path');
+  // Get URL path parameter
+  if (urlParams.has("path")) {
+    path = urlParams.get("path");
   }
 
   // if empty: path -> null
   return path;
 }
 
+function getPwd() {
+  let path = getQueryPath();
+  let segs = path.split("/");
+  let pwd = "";
+  for (let i = 0; i < segs.length - 1; i++) {
+    pwd += segs[i] + "/";
+  }
+  return pwd;
+}
+
 async function renderMd(path) {
   // Get markdown element
-  $('#markdown').html(parser(await getText(path)));
+  $("#markdown").html(parser(await getText(path)));
 
   // dynamic title
-  document.title = $('#markdown>h1').first().text();
+  document.title = $("#markdown>h1").first().text();
 
-  $('a[href]').click(function (e) {
-    let href = $(this).attr('href');
+  for (element of $("img[src]")) {
+    let src = $(element).attr("src");
+    try {
+      new URL(src);
+    } catch {
+      if (!src.startsWith("/")) {
+        src = getPwd() + src;
+        $(element).attr("src", src);
+      }
+    }
+  }
+
+  for (element of $("a[href]")) {
+    console.log(element);
+    let href = $(element).attr("href");
+    try {
+      new URL(href);
+    } catch {
+      if (!href.startsWith("/") && href.length > 0) {
+        href = getPwd() + href;
+        $(element).attr("href", href);
+      }
+    }
+  }
+
+  $("a[href]").click(function (e) {
+    let href = $(this).attr("href");
     let link = null;
     try {
       link = new URL(href);
     } catch {
-      if (!href.startsWith("/")) {
-        console.log(path);
-        let segs = path.split("/");
-        let pwd = "";
-        for (let i = 0; i < segs.length - 1; i++) {
-          pwd += segs[i] + "/";
-        }
-        href = pwd + href;
-      }
-      href = window.location.protocol + '//' + window.location.hostname + href;
+      href =
+        window.location.protocol + "//" + window.location.hostname + href;
       link = new URL(href);
     }
 
@@ -70,10 +96,14 @@ async function renderMd(path) {
       return;
     }
     // open markdown
-    e.preventDefault()
-    link = new URL(window.location.href.replace(window.location.search, '') + '?path=' + link.pathname)
-    window.open(link, '_self');
-  })
+    e.preventDefault();
+    link = new URL(
+      window.location.href.replace(window.location.search, "") +
+      "?path=" +
+      link.pathname
+    );
+    window.open(link, "_self");
+  });
   hljs.highlightAll();
   renderLatex(document.body);
 }
@@ -81,12 +111,12 @@ async function renderMd(path) {
 async function main() {
   let path = getQueryPath();
   if (path === null) {
-    let response = await fetch('/index.md');
+    let response = await fetch("/index.md");
     if (response.ok) {
-      renderMd('/index.md');
+      window.location.replace(window.location.pathname + "?path=/index.md");
       return;
     } else {
-      renderMd('/README.md');
+      window.location.replace(window.location.pathname + "?path=/README.md");
       return;
     }
   } else {
@@ -97,6 +127,7 @@ async function main() {
     }
     let response = await fetch(path);
     if (response.ok) {
+      filePath = path;
       renderMd(path);
       return;
     } else {
@@ -106,4 +137,96 @@ async function main() {
     }
   }
 }
-main();
+
+function getFileName() {
+  if (filePath == null) { return false; }
+
+  let fileName = filePath.replace('.md', '');
+  while (fileName.includes("/")) {
+    fileName = fileName.substring(fileName.indexOf("/") + 1);
+  }
+
+  return fileName
+}
+
+function downloadFile(fileType) {
+  const downloadLink = document.createElement("a");
+  if (fileType == "markdown") {
+    downloadLink.href = filePath;
+    // Name the file 
+    if (getFileName() !== false) { downloadLink.download = `${getFileName()}.md`; }
+    else { downloadLink.download = 'download.md'; }
+
+  } else if (fileType == "html") {
+    const html = document.querySelector("html").innerHTML;
+    const dataURI = "data:text/html," + encodeURIComponent(html);
+    downloadLink.href = dataURI;
+    // Name the file 
+    downloadLink.download = `${getFileName()}.html`
+
+  } else if (fileType == "both") {
+    downloadFile("markdown");
+    downloadFile("html");
+
+  } else { return; }
+
+  popup.style.visibility = "hidden";
+  popupOverlay.style.visibility = "hidden";
+  document.querySelector('body').style.overflowY = 'visible';
+  downloadLink.click();
+}
+
+if (readyToRun) {
+
+
+  let keys = {
+    Control: false,
+    s: false,
+  };
+
+  $(document).bind("keydown", function (e) {
+    if (e.ctrlKey && e.which == 83) {
+      e.preventDefault();
+    }
+  });
+
+  addEventListener("keydown", (event) => {
+    if (event.key === "Control") {
+      keys.a = true;
+    }
+    if (event.key === "s") {
+      keys.s = true;
+    }
+    if (keys.a && keys.s) {
+      popup.style.visibility = "visible";
+      popupOverlay.style.visibility = "visible";
+      popup.style.top = window.scrollY + 'px';
+      popupOverlay.style.top = window.scrollY + 'px';
+      document.querySelector('body').style.overflowY = 'hidden';
+    }
+  });
+
+  addEventListener("keyup", (event) => {
+    if (event.key === "Control") {
+      keys.a = false;
+    }
+    if (event.key === "s") {
+      keys.s = false;
+    }
+  });
+
+  exitPopup.addEventListener("click", () => {
+    popup.style.visibility = "hidden";
+    popupOverlay.style.visibility = "hidden";
+    document.querySelector('body').style.overflowY = 'visible';
+  });
+
+  // namespace issue
+  parser = markdown;
+  renderLatex = renderMathInElement;
+  filePath = null;
+  exitPopup = document.querySelector("#exit-popup");
+  popup = document.querySelector(".popup-container");
+  popupOverlay = document.querySelector("#popup-overlay");
+  main();
+}
