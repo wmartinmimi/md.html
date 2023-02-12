@@ -2,14 +2,6 @@
 let parser = markdown;
 let renderable = false;
 
-async function getText(path) {
-  let response = await fetch(path);
-  if (response.ok) {
-    return await response.text();
-  }
-  return false;
-}
-
 // Make sure it points to a markdown file
 function isPathMd(path) {
   if (path.endsWith(".md") || path.endsWith(".markdown")) {
@@ -42,10 +34,6 @@ function getPwd() {
     pwd += segs[i] + "/";
   }
   return pwd;
-}
-
-function parse(html) {
-  $("#markdown").html(html);
 }
 
 async function followup_addition() {
@@ -118,12 +106,12 @@ async function customLinkOpen() {
   });
 }
 
-async function process(path) {
+async function process(text) {
   // Get markdown element
-  let html = parser(await getText(path));
+  let html = parser(text);
 
   window.requestAnimationFrame(() => {
-    parse(html);
+    $("#markdown").html(html);
     renderable = true;
     window.requestAnimationFrame(() => {
       //pausecomp(1000);
@@ -232,7 +220,7 @@ async function main() {
     }
     let response = await fetch(path);
     if (response.ok) {
-      process(path);
+      process(await response.text());
       return;
     } else {
       // open without saving current url to history
