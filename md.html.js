@@ -181,8 +181,9 @@ function downloadFile(fileType) {
 }
 
 let keys = {
-  Control: false,
-  s: false,
+  ctrl: false,
+  cmd: false,
+  s: false
 };
 
 $(document).bind("keydown", function (e) {
@@ -193,12 +194,12 @@ $(document).bind("keydown", function (e) {
 
 addEventListener("keydown", (event) => {
   if (event.key === "Control") {
-    keys.a = true;
+    keys.ctrl = true;
   }
   if (event.key === "s") {
     keys.s = true;
   }
-  if (keys.a && keys.s) {
+  if (keys.ctrl && keys.s) {
     popup.style.visibility = "visible";
     popupOverlay.style.visibility = "visible";
     popup.style.top = window.scrollY + 'px';
@@ -209,7 +210,7 @@ addEventListener("keydown", (event) => {
 
 addEventListener("keyup", (event) => {
   if (event.key === "Control") {
-    keys.a = false;
+    keys.ctrl = false;
   }
   if (event.key === "s") {
     keys.s = false;
