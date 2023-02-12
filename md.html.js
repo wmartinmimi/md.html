@@ -1,6 +1,13 @@
 // namespace issue
 let parser = markdown;
+
+// global variables
 let renderable = false;
+let keys = {
+  ctrl: false,
+  cmd: false,
+  s: false
+};
 
 // Make sure it points to a markdown file
 function isPathMd(path) {
@@ -12,18 +19,17 @@ function isPathMd(path) {
 
 function getQueryPath() {
   // Gets URL parameters
-  const queryString = window.location.search;
-  const urlParams = new URLSearchParams(queryString);
-
-  let path = null;
+  let queryString = window.location.search;
+  let urlParams = new URLSearchParams(queryString);
 
   // Get URL path parameter
   if (urlParams.has("path")) {
-    path = urlParams.get("path");
+    return urlParams.get("path");
+  } else {
+    // if empty: path -> null
+    // never null if markdown displayed
+    return null;
   }
-
-  // if empty: path -> null
-  return path;
 }
 
 function getPwd() {
@@ -255,12 +261,6 @@ function downloadFile(fileType) {
   document.querySelector('body').style.overflowY = 'visible';
   downloadLink.click();
 }
-
-let keys = {
-  ctrl: false,
-  cmd: false,
-  s: false
-};
 
 function keyChar(event) {
   return String.fromCharCode(event.which).toLowerCase();
