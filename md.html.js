@@ -111,6 +111,25 @@ async function renderMd(path) {
   renderLatex(document.body);
 }
 
+function buildPopup() {
+  let save_markdown = $("<button>Markdown</button>");
+  save_markdown.click(() => {
+    downloadFile("markdown");
+  })
+  
+  let save_html = $("<button>HTML</button>");
+  save_html.click(() => {
+    downloadFile("html");
+  })
+  
+  let save_both = $("<button>Both</button>");
+  save_both.click(() => {
+    downloadFile("markdown");
+    downloadFile("html");
+  })
+  $(".buttons-container").append(save_markdown, save_html, save_both);
+}
+
 async function main() {
   let path = getQueryPath();
   if (path === null) {
@@ -132,6 +151,7 @@ async function main() {
     if (response.ok) {
       filePath = path;
       renderMd(path);
+      buildPopup();
       return;
     } else {
       // open without saving current url to history
