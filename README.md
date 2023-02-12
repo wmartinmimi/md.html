@@ -47,6 +47,16 @@ lineequ()
 <p class="lovely">helloworld</p>
 ```
 
+```d
+/* A wide range of different languages */
+
+import std.stdio;
+
+void main() {
+    writeln("Hello, D!");
+}
+```
+
 $$c = \\pm\\sqrt{a^2 + b^2}$$
 
 1. Numbered lists

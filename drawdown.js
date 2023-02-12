@@ -3,6 +3,8 @@
  * (c) Adam Leggett
  */
 
+// global variables
+let languages = [];
 
 function markdown(src) {
 
@@ -97,6 +99,7 @@ function markdown(src) {
         let code = null;
         if (tag.startsWith('```') && !tag.endsWith('```')) {
             tag = tag.replace(/```/gm, '').trim();
+            languages.push(tag);
             code = '<code class="language-' + tag + '">' + p3 + '</code>';
         } else {
             code = '<code class="language-plaintext">' + (p3 || p4.replace(/^    /gm, '')) + '</code>';
