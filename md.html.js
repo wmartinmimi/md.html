@@ -68,7 +68,6 @@ async function renderMd(path) {
   }
 
   for (element of $("a[href]")) {
-    console.log(element);
     let href = $(element).attr("href");
     try {
       new URL(href);
