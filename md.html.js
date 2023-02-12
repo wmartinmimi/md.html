@@ -242,15 +242,6 @@ async function main() {
   }
 }
 
-function getFileName() {
-  let fileName = getQueryPath().replace('.md', '');
-  while (fileName.includes("/")) {
-    fileName = fileName.substring(fileName.indexOf("/") + 1);
-  }
-
-  return fileName;
-}
-
 function downloadFile(fileType) {
   const downloadLink = document.createElement("a");
   if (fileType === "markdown") {
@@ -261,7 +252,9 @@ function downloadFile(fileType) {
     const dataURI = "data:text/html," + encodeURIComponent(html);
     downloadLink.href = dataURI;
     // Name the file 
-    downloadLink.download = `${getFileName()}.html`
+    let fileNameSegs = getQueryPath().replace('.md', '').split("/");
+    let fileName = fileNameSegs[fileNameSegs.length - 1];
+    downloadLink.download = `${fileName}.html`
 
   } else if (fileType === "both") {
     downloadFile("markdown");
