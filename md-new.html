@@ -6,23 +6,6 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-    <script>
-      function addJS(url) {
-        let js = document.createElement("script");
-        js.src = url;
-        js.async = false;
-        js.defer = false;
-        document.head.appendChild(js);
-      }
-
-      function addCSS(url) {
-        let link = document.createElement("link");
-        link.href = url;
-        link.rel = "stylesheet"
-        document.head.appendChild(link);
-      }
-    </script>
   </head>
 
   <body>
@@ -44,17 +27,26 @@
     <div id="markdown"></div>
     <script>
       async function main() {
-        let response = await fetch('app.json');
+        document.querySelector("#js_required_warning").style.display = 'none';
+        
+        let response = await fetch('development.json');
         let json = await response.json();
         console.log(json);
+
         for (url of json.js) {
-          addJS(url);
+          let js = document.createElement("script");
+          js.src = url;
+          js.async = false;
+          js.defer = false;
+          document.head.appendChild(js);
         }
-        
+
         for (url of json.css) {
-          addCSS(url);
+          let link = document.createElement("link");
+          link.href = url;
+          link.rel = "stylesheet"
+          document.head.appendChild(link);
         }
-        document.querySelector("#js_required_warning").style.display = 'none';
       }
       main();
     </script>
