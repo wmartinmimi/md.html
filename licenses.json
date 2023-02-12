@@ -1,25 +1,25 @@
 [{
   "name": "jquery/jquery",
-  "license": "MIT",
-  "license_url": "https://github.com/jquery/jquery/blob/main/LICENSE.txt"
+  "type": "MIT",
+  "url": "https://github.com/jquery/jquery/blob/main/LICENSE.txt"
 },{
   "name": "adamvleggett/drawdown",
-  "license": "MIT",
-  "license_url": "https://github.com/adamvleggett/drawdown/blob/master/LICENSE"
+  "type": "MIT",
+  "url": "https://github.com/adamvleggett/drawdown/blob/master/LICENSE"
 },{
   "name": "KaTeX/KaTeX",
-  "license": "MIT",
-  "license_url": "https://github.com/KaTeX/KaTeX/blob/main/LICENSE"
+  "type": "MIT",
+  "url": "https://github.com/KaTeX/KaTeX/blob/main/LICENSE"
 }, {
   "name": "Yukaii/github-highlightjs-themes",
-  "license": "MIT",
-  "license_url": "https://github.com/Yukaii/github-highlightjs-themes"
+  "type": "MIT",
+  "url": "https://github.com/Yukaii/github-highlightjs-themes"
 }, {
   "name": "highlightjs/highlightjs",
-  "license": "BSD-3-Clause",
-  "license_url": "https://github.com/highlightjs/highlight.js/blob/main/LICENSE"
+  "type": "BSD-3-Clause",
+  "url": "https://github.com/highlightjs/highlight.js/blob/main/LICENSE"
 }, {
   "name": "wmartinmimi/md.html",
-  "license": "MIT",
-  "license_url": "https://github.com/wmartinmimi/md.html/blob/main/LICENSE"
+  "type": "MIT",
+  "url": "https://github.com/wmartinmimi/md.html/blob/main/LICENSE"
 }]
