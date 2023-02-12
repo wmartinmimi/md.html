@@ -53,6 +53,9 @@ async function followup_addition() {
   // dynamic title
   document.title = $("#markdown>h1").first().text();
 
+  // clear up bootstrap
+  $("body>script").remove();
+
   $("#markdown").ready(() => {
     linkfix();
     customLinkOpen();
@@ -193,7 +196,6 @@ async function main() {
     }
     let response = await fetch(path);
     if (response.ok) {
-      filePath = path;
       process(path);
       return;
     } else {
@@ -215,11 +217,11 @@ function getFileName() {
 
 function downloadFile(fileType) {
   const downloadLink = document.createElement("a");
-  if (fileType == "markdown") {
+  if (fileType === "markdown") {
     downloadLink.href = getQueryPath();
 
-  } else if (fileType == "html") {
-    const html = document.querySelector("html").outerHTML;
+  } else if (fileType === "html") {
+    const html = "<!DOCTYPE html>" + document.querySelector("html").outerHTML;
     const dataURI = "data:text/html," + encodeURIComponent(html);
     downloadLink.href = dataURI;
     // Name the file 
@@ -228,8 +230,7 @@ function downloadFile(fileType) {
   } else if (fileType == "both") {
     downloadFile("markdown");
     downloadFile("html");
-
-  } else { return; }
+  }
 
   $(".popup").css("visibility", "hidden");
   popupOverlay.style.visibility = "hidden";
