@@ -142,7 +142,7 @@ th {
   color: var(--quote-text-color);
 }
 
-.buttons-container button {
+.popup .container button {
   font-size: 100%;
   width: 10rem;
   height: 30px;
@@ -151,7 +151,7 @@ th {
   border-color: var(--quote-line-color);
 }
 
-.buttons-container button:hover {
+.popup .container button:hover {
   cursor: pointer;
   background-color: var(--quote-text-color);
 }

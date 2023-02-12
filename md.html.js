@@ -2,8 +2,6 @@
 parser = markdown;
 renderLatex = renderMathInElement;
 let filePath = null;
-const exitPopup = document.querySelector("#exit-popup");
-const popup = document.querySelector(".popup");
 const popupOverlay = document.querySelector("#popup-overlay");
 
 async function getText(path) {
@@ -112,6 +110,24 @@ async function renderMd(path) {
 }
 
 function buildPopup() {
+  let popup = $("<div class=\"popup\"></div>");
+
+  
+  $("#popup-overlay").append(popup);
+
+  let exit = $("<span>X</span>");
+  exit.click(() => {
+    popup.css("visibility", "hidden");
+    popupOverlay.style.visibility = "hidden";
+    document.querySelector('body').style.overflowY = 'visible';
+  })
+
+  let title = $("<h3>Save File As:</h3>");
+
+  let container = $("<div class=\"container\"></div>");
+
+  popup.append(exit, title, container);
+
   let save_markdown = $("<button>Markdown</button>");
   save_markdown.click(() => {
     downloadFile("markdown");
@@ -127,7 +143,8 @@ function buildPopup() {
     downloadFile("markdown");
     downloadFile("html");
   })
-  $(".buttons-container").append(save_markdown, save_html, save_both);
+
+  container.append(save_markdown, save_html, save_both);
 }
 
 async function main() {
@@ -193,7 +210,7 @@ function downloadFile(fileType) {
 
   } else { return; }
 
-  popup.style.visibility = "hidden";
+  $(".popup").css("visibility", "hidden");
   popupOverlay.style.visibility = "hidden";
   document.querySelector('body').style.overflowY = 'visible';
   downloadLink.click();
@@ -226,9 +243,9 @@ $(document).bind("keydown", (event) => {
     keys.s = true;
   }
   if (keys.ctrl && keys.s) {
-    popup.style.visibility = "visible";
+    $(".popup").css("visibility", "visible");
     popupOverlay.style.visibility = "visible";
-    popup.style.top = window.scrollY + 'px';
+    $(".popup").css("top", window.scrollY + 'px');
     popupOverlay.style.top = window.scrollY + 'px';
     document.querySelector('body').style.overflowY = 'hidden';
   }
@@ -244,12 +261,6 @@ $(document).bind("keyup", (event) => {
   if (keyChar(event) === "s") {
     keys.s = false;
   }
-});
-
-$(exitPopup).click(() => {
-  popup.style.visibility = "hidden";
-  popupOverlay.style.visibility = "hidden";
-  document.querySelector('body').style.overflowY = 'visible';
 });
 
 main();
