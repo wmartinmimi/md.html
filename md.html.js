@@ -1,6 +1,6 @@
 // namespace issue
 parser = markdown;
-renderLatex = renderMathInElement;
+let renderable = false;
 let filePath = null;
 const popupOverlay = document.querySelector("#popup-overlay");
 
@@ -46,9 +46,14 @@ function getPwd() {
   return pwd;
 }
 
-async function renderMd(path) {
+async function parseMd(path) {
   // Get markdown element
   $("#markdown").html(parser(await getText(path)));
+
+  renderable = true;
+  if (typeof render !== undefined) {
+    render();
+  }
 
   // dynamic title
   document.title = $("#markdown>h1").first().text();
@@ -105,8 +110,6 @@ async function renderMd(path) {
     );
     window.open(link, "_self");
   });
-  hljs.highlightAll();
-  renderLatex(document.body);
 }
 
 function buildPopup() {
@@ -167,7 +170,7 @@ async function main() {
     let response = await fetch(path);
     if (response.ok) {
       filePath = path;
-      renderMd(path);
+      parseMd(path);
       buildPopup();
       return;
     } else {
