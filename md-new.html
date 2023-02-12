@@ -10,20 +10,18 @@
 
   <body>
     <p id="js_required_warning">This is a markdown viewer that requires javascript to be enabled.</p>
-    <section id="popup-overlay"></section>
-    <div class="popup-container">
+    <section id="popup-overlay">
       <div class="popup">
         <span id="exit-popup">X</span>
         <h3>Save File</h3>
-        <div class="buttons-container">
-        </div>
+        <div class="buttons-container"></div>
       </div>
-    </div>
+    </section>
     <div id="markdown"></div>
     <script>
       async function main() {
         document.querySelector("#js_required_warning").style.display = 'none';
-        
+
         let response = await fetch('development.json');
         let json = await response.json();
         console.log(json);

@@ -3,7 +3,7 @@ parser = markdown;
 renderLatex = renderMathInElement;
 let filePath = null;
 const exitPopup = document.querySelector("#exit-popup");
-const popup = document.querySelector(".popup-container");
+const popup = document.querySelector(".popup");
 const popupOverlay = document.querySelector("#popup-overlay");
 
 async function getText(path) {
