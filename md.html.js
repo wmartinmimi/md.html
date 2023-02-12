@@ -1,7 +1,6 @@
 // namespace issue
-parser = markdown;
+let parser = markdown;
 let renderable = false;
-let filePath = null;
 const popupOverlay = document.querySelector("#popup-overlay");
 
 async function getText(path) {
@@ -46,18 +45,21 @@ function getPwd() {
   return pwd;
 }
 
-async function parseMd(path) {
-  // Get markdown element
-  $("#markdown").html(parser(await getText(path)));
+function parse(html) {
+  $("#markdown").html(html);
+}
 
-  renderable = true;
-  if (typeof render !== undefined) {
-    render();
-  }
-
+async function followup_addition() {
   // dynamic title
   document.title = $("#markdown>h1").first().text();
 
+  $("#markdown").ready(() => {
+    linkfix();
+    customLinkOpen();
+  })
+}
+
+async function linkfix() {
   for (element of $("img[src]")) {
     let src = $(element).attr("src");
     try {
@@ -81,7 +83,9 @@ async function parseMd(path) {
       }
     }
   }
+}
 
+async function customLinkOpen() {
   $("a[href]").click(function (e) {
     let href = $(this).attr("href");
     let link = null;
@@ -112,11 +116,29 @@ async function parseMd(path) {
   });
 }
 
-function buildPopup() {
-  let popup = $("<div class=\"popup\"></div>");
+async function process(path) {
+  // Get markdown element
+  let html = parser(await getText(path));
 
-  
-  $("#popup-overlay").append(popup);
+  window.requestAnimationFrame(() => {
+    parse(html);
+    renderable = true;
+    window.requestAnimationFrame(() => {
+      //pausecomp(1000);
+      followup_addition();
+      buildPopup();
+      window.requestAnimationFrame(() => {
+        //pausecomp(1000);
+        if (typeof render !== "undefined") {
+          render();
+        }
+      })
+    });
+  })
+}
+
+async function buildPopup() {
+  let popup = $("<div class=\"popup\"></div>");
 
   let exit = $("<span>X</span>");
   exit.click(() => {
@@ -135,12 +157,12 @@ function buildPopup() {
   save_markdown.click(() => {
     downloadFile("markdown");
   })
-  
+
   let save_html = $("<button>HTML</button>");
   save_html.click(() => {
     downloadFile("html");
   })
-  
+
   let save_both = $("<button>Both</button>");
   save_both.click(() => {
     downloadFile("markdown");
@@ -148,6 +170,8 @@ function buildPopup() {
   })
 
   container.append(save_markdown, save_html, save_both);
+
+  $("#popup-overlay").append(popup);
 }
 
 async function main() {
@@ -170,8 +194,7 @@ async function main() {
     let response = await fetch(path);
     if (response.ok) {
       filePath = path;
-      parseMd(path);
-      buildPopup();
+      process(path);
       return;
     } else {
       // open without saving current url to history
@@ -182,26 +205,21 @@ async function main() {
 }
 
 function getFileName() {
-  if (filePath == null) { return false; }
-
-  let fileName = filePath.replace('.md', '');
+  let fileName = getQueryPath().replace('.md', '');
   while (fileName.includes("/")) {
     fileName = fileName.substring(fileName.indexOf("/") + 1);
   }
 
-  return fileName
+  return fileName;
 }
 
 function downloadFile(fileType) {
   const downloadLink = document.createElement("a");
   if (fileType == "markdown") {
-    downloadLink.href = filePath;
-    // Name the file 
-    if (getFileName() !== false) { downloadLink.download = `${getFileName()}.md`; }
-    else { downloadLink.download = 'download.md'; }
+    downloadLink.href = getQueryPath();
 
   } else if (fileType == "html") {
-    const html = document.querySelector("html").innerHTML;
+    const html = document.querySelector("html").outerHTML;
     const dataURI = "data:text/html," + encodeURIComponent(html);
     downloadLink.href = dataURI;
     // Name the file 
@@ -234,7 +252,7 @@ $(document).bind("keydown", (event) => {
   keys.ctrl = event.ctrlKey;
   keys.cmd = event.metaKey;
   keys.s = keyChar(event) === "s";
-  
+
   if ((keys.ctrl || keys.cmd) && keys.s) {
     event.preventDefault();
   }

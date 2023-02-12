@@ -4,6 +4,6 @@ async function render() {
   hljs.highlightAll();
 }
 
-if (renderable) {
+if (typeof renderable !== "undefined" && renderable) {
   render();
 }
