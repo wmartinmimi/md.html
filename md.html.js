@@ -1,6 +1,10 @@
-parser = function(){};
-renderLatex = function(){};
-
+// namespace issue
+parser = markdown;
+renderLatex = renderMathInElement;
+let filePath = null;
+const exitPopup = document.querySelector("#exit-popup");
+const popup = document.querySelector(".popup-container");
+const popupOverlay = document.querySelector("#popup-overlay");
 
 async function getText(path) {
   let response = await fetch(path);
@@ -176,57 +180,46 @@ function downloadFile(fileType) {
   downloadLink.click();
 }
 
-if (readyToRun) {
+let keys = {
+  Control: false,
+  s: false,
+};
 
+$(document).bind("keydown", function (e) {
+  if (e.ctrlKey && e.which == 83) {
+    e.preventDefault();
+  }
+});
 
-  let keys = {
-    Control: false,
-    s: false,
-  };
+addEventListener("keydown", (event) => {
+  if (event.key === "Control") {
+    keys.a = true;
+  }
+  if (event.key === "s") {
+    keys.s = true;
+  }
+  if (keys.a && keys.s) {
+    popup.style.visibility = "visible";
+    popupOverlay.style.visibility = "visible";
+    popup.style.top = window.scrollY + 'px';
+    popupOverlay.style.top = window.scrollY + 'px';
+    document.querySelector('body').style.overflowY = 'hidden';
+  }
+});
 
-  $(document).bind("keydown", function (e) {
-    if (e.ctrlKey && e.which == 83) {
-      e.preventDefault();
-    }
-  });
+addEventListener("keyup", (event) => {
+  if (event.key === "Control") {
+    keys.a = false;
+  }
+  if (event.key === "s") {
+    keys.s = false;
+  }
+});
 
-  addEventListener("keydown", (event) => {
-    if (event.key === "Control") {
-      keys.a = true;
-    }
-    if (event.key === "s") {
-      keys.s = true;
-    }
-    if (keys.a && keys.s) {
-      popup.style.visibility = "visible";
-      popupOverlay.style.visibility = "visible";
-      popup.style.top = window.scrollY + 'px';
-      popupOverlay.style.top = window.scrollY + 'px';
-      document.querySelector('body').style.overflowY = 'hidden';
-    }
-  });
+exitPopup.addEventListener("click", () => {
+  popup.style.visibility = "hidden";
+  popupOverlay.style.visibility = "hidden";
+  document.querySelector('body').style.overflowY = 'visible';
+});
 
-  addEventListener("keyup", (event) => {
-    if (event.key === "Control") {
-      keys.a = false;
-    }
-    if (event.key === "s") {
-      keys.s = false;
-    }
-  });
-
-  exitPopup.addEventListener("click", () => {
-    popup.style.visibility = "hidden";
-    popupOverlay.style.visibility = "hidden";
-    document.querySelector('body').style.overflowY = 'visible';
-  });
-
-  // namespace issue
-  parser = markdown;
-  renderLatex = renderMathInElement;
-  filePath = null;
-  exitPopup = document.querySelector("#exit-popup");
-  popup = document.querySelector(".popup-container");
-  popupOverlay = document.querySelector("#popup-overlay");
-  main();
-}
+main();

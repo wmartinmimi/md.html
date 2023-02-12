@@ -1,14 +1,17 @@
 {
  "version" : "v1.0",
  "version code" : 1,
- "imports" : [
+  "js" : [
   "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js",
   "drawdown.js",
-  "https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css",
   "https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.js",
   "https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/contrib/auto-render.min.js",
-  "syntaxhighlight.css",
-  "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"
+  "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js",
+  "md.html.js"
  ],
- "main": "md.html.js"
+ "css" : [
+  "https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css",
+  "syntaxhighlight.css",
+  "md.html.css"
+ ]
 }

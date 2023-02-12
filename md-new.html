@@ -7,19 +7,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-
     <script>
       function addJS(url) {
         let js = document.createElement("script");
         js.src = url;
-        js.onload = function() {
-          readyjs += 1;
-          if (readyjs >= totaljs) {
-            readyToRun = true;
-            console.log("ready")
-            main();
-          }
-        };
+        js.async = false;
+        js.defer = false;
         document.head.appendChild(js);
       }
 
@@ -29,29 +22,6 @@
         link.rel = "stylesheet"
         document.head.appendChild(link);
       }
-
-      readyjs = 0;
-      totaljs = 5;
-      readyToRun = false;
-
-      async function heading() {
-
-        let response = await fetch('app.json');
-        let json = await response.json();
-        console.log(json);
-        for (url of json.imports) {
-          console.log(url)
-          let seg = url.split(".");
-          let extension = seg[seg.length - 1];
-          if (extension === "js") {
-            addJS(url);
-            // totaljs += 1;
-          } else if (extension === "css") {
-            addCSS(url);
-          }
-        }
-      }
-      heading();
     </script>
   </head>
 
@@ -72,17 +42,19 @@
     </div>
     <div id="markdown"></div>
     <script>
-
-      async function body() {
+      async function main() {
         let response = await fetch('app.json');
         let json = await response.json();
-
-        addJS(json.main);
+        console.log(json);
+        for (url of json.js) {
+          addJS(url);
+        }
+        
+        for (url of json.css) {
+          addCSS(url);
+        }
       }
-
-      body();
-
-
+      main();
     </script>
   </body>
 
