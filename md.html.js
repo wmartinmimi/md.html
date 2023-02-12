@@ -186,13 +186,20 @@ let keys = {
   s: false
 };
 
-$(document).bind("keydown", function (e) {
-  if (e.ctrlKey && e.which == 83) {
-    e.preventDefault();
-  }
-});
+function keyChar(event) {
+  return String.fromCharCode(event.which).toLowerCase();
+}
 
-addEventListener("keydown", (event) => {
+$(document).bind("keydown", (event) => {
+
+  keys.ctrl = event.ctrlKey;
+  keys.cmd = event.metaKey;
+  keys.s = keyChar(event) === "s";
+  
+  if ((keys.ctrl || keys.cmd) && keys.s) {
+    event.preventDefault();
+  }
+
   if (event.key === "Control") {
     keys.ctrl = true;
   }
@@ -208,16 +215,19 @@ addEventListener("keydown", (event) => {
   }
 });
 
-addEventListener("keyup", (event) => {
-  if (event.key === "Control") {
+$(document).bind("keyup", (event) => {
+  if (event.ctrlKey) {
     keys.ctrl = false;
   }
-  if (event.key === "s") {
+  if (event.metaKey) {
+    keys.cmd = false;
+  }
+  if (keyChar(event) === "s") {
     keys.s = false;
   }
 });
 
-exitPopup.addEventListener("click", () => {
+$(exitPopup).click(() => {
   popup.style.visibility = "hidden";
   popupOverlay.style.visibility = "hidden";
   document.querySelector('body').style.overflowY = 'visible';
