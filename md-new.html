@@ -26,6 +26,7 @@
   </head>
 
   <body>
+    <p id="js_required_warning">This is a markdown viewer that requires javascript to be enabled.</p>
     <section id="popup-overlay"></section>
     <div class="popup-container">
       <div class="popup">
@@ -53,6 +54,7 @@
         for (url of json.css) {
           addCSS(url);
         }
+        document.querySelector("#js_required_warning").style.display = 'none';
       }
       main();
     </script>
