@@ -3,34 +3,12 @@ let parser = markdown;
 
 // global variables
 let renderable = false;
+let setup_save_popup = false;
 let keys = {
   ctrl: false,
   cmd: false,
   s: false
 };
-
-// Make sure it points to a markdown file
-function isPathMd(path) {
-  if (path.endsWith(".md") || path.endsWith(".markdown")) {
-    return path;
-  }
-  return null;
-}
-
-function getQueryPath() {
-  // Gets URL parameters
-  let queryString = window.location.search;
-  let urlParams = new URLSearchParams(queryString);
-
-  // Get URL path parameter
-  if (urlParams.has("path")) {
-    return urlParams.get("path");
-  } else {
-    // if empty: path -> null
-    // never null if markdown displayed
-    return null;
-  }
-}
 
 function getPwd() {
   let path = getQueryPath();
@@ -120,11 +98,15 @@ async function process(text) {
     $("#markdown").html(html);
     renderable = true;
     window.requestAnimationFrame(() => {
-      //pausecomp(1000);
       followup_addition();
-      buildPopup();
+
+      // in save-popup.js
+      setup_save_popup = true;
+      if (typeof buildPopup !== "undefined") {
+        buildPopup();
+      }
       window.requestAnimationFrame(() => {
-        //pausecomp(1000);
+        // in renderer.js
         if (typeof render !== "undefined") {
           render();
         }
@@ -133,137 +115,20 @@ async function process(text) {
   })
 }
 
-async function buildPopup() {
-  let popup = $("<div class=\"popup\"></div>");
-
-  let exit = $("<span>X</span>");
-  exit.click(() => {
-    popup.css("visibility", "hidden");
-    $("#popup-overlay").css("visibility", "hidden");
-    document.querySelector('body').style.overflowY = 'visible';
-  })
-
-  let title = $("<h3>Save File As:</h3>");
-
-  let container = $("<div class=\"container\"></div>");
-
-  popup.append(exit, title, container);
-
-  let save_markdown = $("<button>Markdown</button>");
-  save_markdown.click(() => {
-    downloadFile("markdown");
-  })
-
-  let save_html = $("<button>HTML</button>");
-  save_html.click(() => {
-    downloadFile("html");
-  })
-
-  let save_both = $("<button>Both</button>");
-  save_both.click(() => {
-    downloadFile("markdown");
-    downloadFile("html");
-  })
-
-  container.append(save_markdown, save_html, save_both);
-
-  $("#popup-overlay").append(popup);
-
-  $(document).bind("keydown", (event) => {
-
-    keys.ctrl = event.ctrlKey;
-    keys.cmd = event.metaKey;
-    keys.s = keyChar(event) === "s";
-
-    if ((keys.ctrl || keys.cmd) && keys.s) {
-      event.preventDefault();
-    }
-
-    if (event.key === "Control") {
-      keys.ctrl = true;
-    }
-    if (event.key === "s") {
-      keys.s = true;
-    }
-    if (keys.ctrl && keys.s) {
-      $(".popup").css("visibility", "visible");
-      $("#popup-overlay").css("visibility", "visible");
-      $(".popup").css("top", window.scrollY + 'px');
-      $("#popup-overlay").css("top", window.scrollY + 'px');
-      document.querySelector('body').style.overflowY = 'hidden';
-    }
-  });
-
-  $(document).bind("keyup", (event) => {
-    if (event.ctrlKey) {
-      keys.ctrl = false;
-    }
-    if (event.metaKey) {
-      keys.cmd = false;
-    }
-    if (keyChar(event) === "s") {
-      keys.s = false;
-    }
-  });
-}
-
-async function main() {
+async function entry() {
   let path = getQueryPath();
-  if (path === null) {
-    let response = await fetch("/index.md");
-    if (response.ok) {
-      window.location.replace(window.location.pathname + "?path=/index.md");
-      return;
-    } else {
-      window.location.replace(window.location.pathname + "?path=/README.md");
-      return;
-    }
+  let response = await fetch(path);
+  if (response.ok) {
+    process(await response.text());
+    return;
   } else {
-    if (!isPathMd(path)) {
-      // open without saving current url to history
-      window.location.replace(path);
-      return;
-    }
-    let response = await fetch(path);
-    if (response.ok) {
-      process(await response.text());
-      return;
-    } else {
-      // open without saving current url to history
-      window.location.replace(path);
-      return;
-    }
-  }
-}
-
-function downloadFile(fileType) {
-  const downloadLink = document.createElement("a");
-  if (fileType === "markdown") {
-    downloadLink.href = getQueryPath();
-
-  } else if (fileType === "html") {
-    const html = "<!DOCTYPE html>" + document.querySelector("html").outerHTML;
-    const dataURI = "data:text/html," + encodeURIComponent(html);
-    downloadLink.href = dataURI;
-    // Name the file 
-    let fileNameSegs = getQueryPath().replace('.md', '').split("/");
-    let fileName = fileNameSegs[fileNameSegs.length - 1];
-    downloadLink.download = `${fileName}.html`
-
-  } else if (fileType === "both") {
-    downloadFile("markdown");
-    downloadFile("html");
+    // open without saving current url to history
+    window.location.replace(path);
     return;
   }
-
-  $(".popup").css("visibility", "hidden");
-  $("#popup-overlay").css("visibility", "hidden");
-  document.querySelector('body').style.overflowY = 'visible';
-  downloadLink.click();
 }
 
-function keyChar(event) {
-  return String.fromCharCode(event.which).toLowerCase();
+if (typeof run_main !== "undefined" && run_main) {
+  run_main = false;
+  entry();
 }
-
-main();
