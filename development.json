@@ -1,6 +1,6 @@
 {
-  "version": "v2.0",
-  "version code": 1,
+  "version": "v2.1",
+  "version code": 2,
   "js": [
     "path-validate.js",
     "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js",
