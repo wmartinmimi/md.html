@@ -1,20 +1,20 @@
 {
- "version" : "v2.0",
- "version code" : 1,
-  "js" : [
+  "version": "v2.0",
+  "version code": 1,
+  "js": [
     "path-validate.js",
-  "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js",
-  "drawdown.js",
-  "md.html.js",
-  "save-popup.js",
-  "https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.js",
-  "https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/contrib/auto-render.min.js",
-  "renderer.js"
- ],
- "css" : [
-  "md.html.css",
-  "https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css",
-  "syntaxhighlight.css"
- ],
- "licenses": "licenses.json"
+    "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js",
+    "drawdown.js",
+    "md.html.js",
+    "save-popup.js",
+    "https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.js",
+    "https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/contrib/auto-render.min.js",
+    "renderer.js"
+  ],
+  "css": [
+    "md.html.css",
+    "https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css",
+    "syntaxhighlight.css"
+  ],
+  "licenses": "licenses.json"
 }

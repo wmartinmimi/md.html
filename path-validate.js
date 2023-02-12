@@ -43,7 +43,8 @@ async function isPathValid() {
 }
 
 // global variable
+console.log("is valid: " + isPathValid());
 let run_main = isPathValid();
-if (typeof entry !== "undefined") {
+if (typeof entry !== "undefined" && run_main) {
   entry();
 }
