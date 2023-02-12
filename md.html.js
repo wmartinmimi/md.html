@@ -1,7 +1,6 @@
 // namespace issue
 let parser = markdown;
 let renderable = false;
-const popupOverlay = document.querySelector("#popup-overlay");
 
 async function getText(path) {
   let response = await fetch(path);
@@ -146,7 +145,7 @@ async function buildPopup() {
   let exit = $("<span>X</span>");
   exit.click(() => {
     popup.css("visibility", "hidden");
-    popupOverlay.style.visibility = "hidden";
+    $("#popup-overlay").css("visibility", "hidden");
     document.querySelector('body').style.overflowY = 'visible';
   })
 
@@ -175,6 +174,43 @@ async function buildPopup() {
   container.append(save_markdown, save_html, save_both);
 
   $("#popup-overlay").append(popup);
+
+  $(document).bind("keydown", (event) => {
+
+    keys.ctrl = event.ctrlKey;
+    keys.cmd = event.metaKey;
+    keys.s = keyChar(event) === "s";
+
+    if ((keys.ctrl || keys.cmd) && keys.s) {
+      event.preventDefault();
+    }
+
+    if (event.key === "Control") {
+      keys.ctrl = true;
+    }
+    if (event.key === "s") {
+      keys.s = true;
+    }
+    if (keys.ctrl && keys.s) {
+      $(".popup").css("visibility", "visible");
+      $("#popup-overlay").css("visibility", "visible");
+      $(".popup").css("top", window.scrollY + 'px');
+      $("#popup-overlay").css("top", window.scrollY + 'px');
+      document.querySelector('body').style.overflowY = 'hidden';
+    }
+  });
+
+  $(document).bind("keyup", (event) => {
+    if (event.ctrlKey) {
+      keys.ctrl = false;
+    }
+    if (event.metaKey) {
+      keys.cmd = false;
+    }
+    if (keyChar(event) === "s") {
+      keys.s = false;
+    }
+  });
 }
 
 async function main() {
@@ -227,13 +263,14 @@ function downloadFile(fileType) {
     // Name the file 
     downloadLink.download = `${getFileName()}.html`
 
-  } else if (fileType == "both") {
+  } else if (fileType === "both") {
     downloadFile("markdown");
     downloadFile("html");
+    return;
   }
 
   $(".popup").css("visibility", "hidden");
-  popupOverlay.style.visibility = "hidden";
+  $("#popup-overlay").css("visibility", "hidden");
   document.querySelector('body').style.overflowY = 'visible';
   downloadLink.click();
 }
@@ -247,42 +284,5 @@ let keys = {
 function keyChar(event) {
   return String.fromCharCode(event.which).toLowerCase();
 }
-
-$(document).bind("keydown", (event) => {
-
-  keys.ctrl = event.ctrlKey;
-  keys.cmd = event.metaKey;
-  keys.s = keyChar(event) === "s";
-
-  if ((keys.ctrl || keys.cmd) && keys.s) {
-    event.preventDefault();
-  }
-
-  if (event.key === "Control") {
-    keys.ctrl = true;
-  }
-  if (event.key === "s") {
-    keys.s = true;
-  }
-  if (keys.ctrl && keys.s) {
-    $(".popup").css("visibility", "visible");
-    popupOverlay.style.visibility = "visible";
-    $(".popup").css("top", window.scrollY + 'px');
-    popupOverlay.style.top = window.scrollY + 'px';
-    document.querySelector('body').style.overflowY = 'hidden';
-  }
-});
-
-$(document).bind("keyup", (event) => {
-  if (event.ctrlKey) {
-    keys.ctrl = false;
-  }
-  if (event.metaKey) {
-    keys.cmd = false;
-  }
-  if (keyChar(event) === "s") {
-    keys.s = false;
-  }
-});
 
 main();
