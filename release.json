@@ -3,16 +3,16 @@
  "version code" : 1,
   "js" : [
   "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js",
-  "drawdown.js",
+  "https://cdn.jsdelivr.net/gh/wmartinmimi/md.html@v2.0/drawdown.js",
   "https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.js",
   "https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/contrib/auto-render.min.js",
   "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js",
-  "md.html.js"
+  "https://cdn.jsdelivr.net/gh/wmartinmimi/md.html@v2.0/md.html.js"
  ],
  "css" : [
   "https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css",
-  "syntaxhighlight.css",
-  "md.html.css"
+  "https://cdn.jsdelivr.net/gh/wmartinmimi/md.html@v2.0/syntaxhighlight.css",
+  "https://cdn.jsdelivr.net/gh/wmartinmimi/md.html@v2.0/md.html.css"
  ],
- "licenses": "licenses.json"
+ "licenses": "https://cdn.jsdelivr.net/gh/wmartinmimi/md.html@v2.0/licenses.json"
 }
