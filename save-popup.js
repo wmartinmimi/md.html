@@ -75,12 +75,23 @@ function buildPopup() {
 }
 
 function downloadFile(fileType) {
+  
+  $(".popup").css("visibility", "hidden");
+  $("#popup-overlay").css("visibility", "hidden");
+  $('body').css("overflowY", 'visible');
+
   const downloadLink = document.createElement("a");
   if (fileType === "markdown") {
     downloadLink.href = getQueryPath();
 
   } else if (fileType === "html") {
-    const html = "<!DOCTYPE html>" + $("html")[0].outerHTML;
+    let vhtml = $('html').clone();
+    vhtml.find('script').remove();
+    for (let runnable of globalThis.onSaveClean ?? []) {
+      runnable(vhtml[0]);
+    }
+    let html = "<!DOCTYPE html>" + vhtml[0].outerHTML;
+
     const dataURI = "data:text/html," + encodeURIComponent(html);
     downloadLink.href = dataURI;
     // Name the file 
@@ -94,15 +105,17 @@ function downloadFile(fileType) {
     return;
   }
 
-  $(".popup").css("visibility", "hidden");
-  $("#popup-overlay").css("visibility", "hidden");
-  $('body').css("overflowY", 'visible');
   downloadLink.click();
 }
 
 function keyChar(event) {
   return String.fromCharCode(event.which).toLowerCase();
 }
+
+globalThis.onSaveClean ??= [];
+globalThis.onSaveClean.push((vhtml) => {
+  $(vhtml).find("#popup-overlay").remove();
+})
 
 if (typeof setup_save_popup !== "undefined" && setup_save_popup) {
   setup_save_popup = false;

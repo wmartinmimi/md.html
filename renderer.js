@@ -36,14 +36,6 @@ async function render() {
   addSyntaxHighlight();
 }
 
-if (typeof globalThis.onSaveClean === "undefined") {
-  globalThis.onSaveClean = []
-}
-
-globalThis.onSaveClean.push(() => {
-  
-})
-
 if (typeof renderable !== "undefined" && renderable) {
   render();
 }
