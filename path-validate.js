@@ -1,3 +1,4 @@
+"use strict";
 
 function getQueryPath() {
   // Gets URL parameters
@@ -43,8 +44,10 @@ async function isPathValid() {
 }
 
 // global variable
-console.log("is valid: " + isPathValid());
-let run_main = isPathValid();
-if (typeof entry !== "undefined" && run_main) {
-  entry();
-}
+let run_main;
+isPathValid().then(val => {
+  run_main = val;
+  if (typeof entry !== "undefined" && run_main) {
+    entry();
+  }
+});

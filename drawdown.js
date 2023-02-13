@@ -3,6 +3,8 @@
  * (c) Adam Leggett
  */
 
+"use strict";
+
 // global variables
 let languages = [];
 
@@ -122,7 +124,7 @@ function markdown(src) {
         if (p1 === "&lt;") {
             p1 = p2.substring(0, p2.length - 4);
         }
-        return '<a href="' + p1 + '">' + unesc(highlight(p1)) + '</a>';
+        return '<a href="' + p1 + '">' + unesc(highlight(p1 ?? "")) + '</a>';
     });
 
     // table

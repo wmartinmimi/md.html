@@ -1,3 +1,5 @@
+"use strict";
+
 // namespace issue
 let parser = markdown;
 
@@ -34,7 +36,7 @@ async function followup_addition() {
 }
 
 async function linkfix() {
-  for (element of $("img[src]")) {
+  for (let element of $("img[src]")) {
     let src = $(element).attr("src");
     try {
       new URL(src);
@@ -46,7 +48,7 @@ async function linkfix() {
     }
   }
 
-  for (element of $("a[href]")) {
+  for (let element of $("a[href]")) {
     let href = $(element).attr("href");
     try {
       new URL(href);

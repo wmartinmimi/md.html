@@ -1,3 +1,5 @@
+"use strict";
+
 function buildPopup() {
   let popup = $("<div class=\"popup\"></div>");
 

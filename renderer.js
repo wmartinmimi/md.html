@@ -1,11 +1,13 @@
-library_loaded = 0;
-library_needed = 0;
+"use strict";
+
+let library_loaded = 0;
+let library_needed = 0;
 
 function addSyntaxHighlight() {
   if (languages.length > 0) {
     library_needed = languages.length + 1;
     addscripts('https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.7.0/build/highlight.min.js', () => {
-      for (lang of languages) {
+      for (let lang of languages) {
         if (hljs.getLanguage(lang) === undefined) {
           console.log(lang + " | " + `https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.7.0/build/languages/${lang}.min.js`);
           addscripts(`https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.7.0/build/languages/${lang}.min.js`, () => {
