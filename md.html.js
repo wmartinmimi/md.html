@@ -2,6 +2,7 @@
 
 // namespace issue
 let parser = markdown;
+let $ = globalThis.jQuery;
 
 // global variables
 let renderable = false;

@@ -5,27 +5,18 @@ function getQueryPath() {
   let queryString = window.location.search;
   let urlParams = new URLSearchParams(queryString);
 
-  // Get URL path parameter
-  if (urlParams.has("path")) {
-    return urlParams.get("path");
-  } else {
-    // if empty: path -> null
-    // never null if markdown displayed
-    return null;
-  }
+  // return ?path, empty otherwise
+  return urlParams.get("path") ?? "";
 }
 
 // Make sure it points to a markdown file
 function isPathMd(path) {
-  if (path.endsWith(".md") || path.endsWith(".markdown")) {
-    return path;
-  }
-  return null;
+  return path.endsWith(".md") || path.endsWith(".markdown");
 }
 
 async function isPathValid() {
   let path = getQueryPath();
-  if (path === null) {
+  if (path === "") {
     let response = await fetch("/index.md");
     if (response.ok) {
       window.location.replace(window.location.pathname + "?path=/index.md");

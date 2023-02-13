@@ -7,7 +7,7 @@ function buildPopup() {
   exit.click(() => {
     popup.css("visibility", "hidden");
     $("#popup-overlay").css("visibility", "hidden");
-    document.querySelector('body').style.overflowY = 'visible';
+    $('body').css("overflowY", 'visible');
   })
 
   let title = $("<h3>Save File As:</h3>");
@@ -57,7 +57,7 @@ function buildPopup() {
       $("#popup-overlay").css("visibility", "visible");
       $(".popup").css("top", window.scrollY + 'px');
       $("#popup-overlay").css("top", window.scrollY + 'px');
-      document.querySelector('body').style.overflowY = 'hidden';
+      $('body').css("overflowY", 'hidden');
     }
   });
 
@@ -80,11 +80,11 @@ function downloadFile(fileType) {
     downloadLink.href = getQueryPath();
 
   } else if (fileType === "html") {
-    const html = "<!DOCTYPE html>" + document.querySelector("html").outerHTML;
+    const html = "<!DOCTYPE html>" + $("html")[0].outerHTML;
     const dataURI = "data:text/html," + encodeURIComponent(html);
     downloadLink.href = dataURI;
     // Name the file 
-    let fileNameSegs = getQueryPath().replace('.md', '').split("/");
+    let fileNameSegs = (getQueryPath()).replace('.md', '').split("/");
     let fileName = fileNameSegs[fileNameSegs.length - 1];
     downloadLink.download = `${fileName}.html`
 
@@ -96,7 +96,7 @@ function downloadFile(fileType) {
 
   $(".popup").css("visibility", "hidden");
   $("#popup-overlay").css("visibility", "hidden");
-  document.querySelector('body').style.overflowY = 'visible';
+  $('body').css("overflowY", 'visible');
   downloadLink.click();
 }
 

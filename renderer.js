@@ -8,13 +8,11 @@ function addSyntaxHighlight() {
     library_needed = languages.length + 1;
     addscripts('https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.7.0/build/highlight.min.js', () => {
       for (let lang of languages) {
-        if (hljs.getLanguage(lang) === undefined) {
-          console.log(lang + " | " + `https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.7.0/build/languages/${lang}.min.js`);
+        if (globalThis.hljs.getLanguage(lang) === undefined) {
           addscripts(`https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.7.0/build/languages/${lang}.min.js`, () => {
             library_loaded += 1;
             if (library_loaded === library_loaded) {
-              console.log("library : " + library_loaded);
-              hljs.highlightAll();
+              globalThis.hljs.highlightAll();
             }
           })
         }
@@ -34,9 +32,17 @@ function addscripts(url, callback) {
 
 async function render() {
   renderable = false;
-  renderMathInElement(document.body);
+  globalThis.renderMathInElement(document.body);
   addSyntaxHighlight();
 }
+
+if (typeof globalThis.onSaveClean === "undefined") {
+  globalThis.onSaveClean = []
+}
+
+globalThis.onSaveClean.push(() => {
+  
+})
 
 if (typeof renderable !== "undefined" && renderable) {
   render();
