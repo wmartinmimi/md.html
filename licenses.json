@@ -3,9 +3,9 @@
   "type": "MIT",
   "url": "https://github.com/jquery/jquery/blob/main/LICENSE.txt"
 },{
-  "name": "adamvleggett/drawdown",
+  "name": "showdownjs/showdown",
   "type": "MIT",
-  "url": "https://github.com/adamvleggett/drawdown/blob/master/LICENSE"
+  "url": "https://github.com/showdownjs/showdown/blob/master/LICENSE"
 },{
   "name": "KaTeX/KaTeX",
   "type": "MIT",

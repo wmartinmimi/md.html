@@ -22,7 +22,7 @@ Supported Markdown features:
 
 ## Headings
 
-Inline styles such as **bold**, _italic_, **_both_**, ~~strikethrough~~, `monospace`, --subscript--, and ^^superscript^^.
+Inline styles such as **bold**, _italic_, **_both_**, ~~strikethrough~~, `monospace`.
 
 > Block quotes, including
 >
@@ -68,6 +68,9 @@ $$c = \\pm\\sqrt{a^2 + b^2}$$
 
 2. Another entry in my numbered list.
 
+- [x] task
+- [ ] more task
+
 | Tables | Tables | Tables |
 | ------ | ------ | ------ |
 | Cell 1 | Cell 2 | Cell 3 |
@@ -82,11 +85,13 @@ $$c = \\pm\\sqrt{a^2 + b^2}$$
 
 bare url: <https://example.com>
 
-[empty links]()
-
 Images:
 
 ![Images](md.html_logo.png)
+
+Image links:
+
+[![Images](md.html_logo.png)](md.html_logo.png)
 
 ---
 
@@ -140,7 +145,7 @@ You are welcomed to create pull requests and add/fix features reasonably. :>
 
 ## Credits
 
-- [adamvleggett/drawdown](https://github.com/adamvleggett/drawdown) (MIT License)
+- [showdownjs/showdown](https://github.com/showdownjs/showdown) (MIT License)
 - [KaTeX/KaTeX](https://github.com/KaTeX/KaTeX) (MIT License)
 - [jquery/jquery](https://github.com/jquery/jquery) (MIT License)
 - [jsdelivr/jsdelivr](https://github.com/jsdelivr/jsdelivr) (MIT License)

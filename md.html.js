@@ -1,7 +1,11 @@
 "use strict";
 
 // namespace issue
-let parser = markdown;
+let parser = (text) => {
+  let converter = new globalThis.showdown.Converter();
+  converter.setFlavor('github');
+  return converter.makeHtml(text);
+};
 let $ = globalThis.jQuery;
 
 // global variables

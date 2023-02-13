@@ -4,6 +4,15 @@ let library_loaded = 0;
 let library_needed = 0;
 
 function addSyntaxHighlight() {
+  let languages = []
+  for (let code of $('pre>code')) {
+    if (code.className === "") {
+      code.className = "language-plaintext"
+    } else {
+      languages.push(code.className.split(" ")[0]);
+    }
+  }
+  
   if (languages.length > 0) {
     library_needed = languages.length + 1;
     addscripts('https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.7.0/build/highlight.min.js', () => {
