@@ -1,8 +1,7 @@
 {
-  "version": "v2.1",
-  "version code": 2,
+  "version": "v2.2",
+  "version code": 3,
   "js": [
-    "test.js",
     "globalvar.js",
     "path-validate.js",
     "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js",

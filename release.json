@@ -1,10 +1,11 @@
 {
-  "version": "v2.1",
-  "version code": 2,
+  "version": "v2.2",
+  "version code": 3,
   "js": [
+    "https://cdn.jsdelivr.net/gh/wmartinmimi/md.html@v2.1/globalvar.js",
     "https://cdn.jsdelivr.net/gh/wmartinmimi/md.html@v2.1/path-validate.js",
     "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js",
-    "https://cdn.jsdelivr.net/gh/wmartinmimi/md.html@v2.1/drawdown.js",
+    "https://cdn.jsdelivr.net/npm/showdown@v2.1.0/dist/showdown.min.js",
     "https://cdn.jsdelivr.net/gh/wmartinmimi/md.html@v2.1/md.html.js",
     "https://cdn.jsdelivr.net/gh/wmartinmimi/md.html@v2.1/save-popup.js",
     "https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.js",
