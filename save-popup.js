@@ -5,8 +5,7 @@ function buildPopup() {
 
   let exit = $("<span>X</span>");
   exit.click(() => {
-    popup.css("visibility", "hidden");
-    $("#popup-overlay").css("visibility", "hidden");
+    $("#popup-overlay").css("display", "none");
     $('body').css("overflowY", 'visible');
   })
 
@@ -53,8 +52,7 @@ function buildPopup() {
       keys.s = true;
     }
     if (keys.ctrl && keys.s) {
-      $(".popup").css("visibility", "visible");
-      $("#popup-overlay").css("visibility", "visible");
+      $("#popup-overlay").css("display", "flex");
       $("#popup-overlay").css("top", window.scrollY + 'px');
       $('body').css("overflowY", 'hidden');
     }
@@ -74,9 +72,7 @@ function buildPopup() {
 }
 
 function downloadFile(fileType) {
-  
-  $(".popup").css("visibility", "hidden");
-  $("#popup-overlay").css("visibility", "hidden");
+  $("#popup-overlay").css("display", "none");
   $('body').css("overflowY", 'visible');
 
   const downloadLink = document.createElement("a");
