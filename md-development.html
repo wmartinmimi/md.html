@@ -29,9 +29,9 @@
             let output = "Library: " + license.name;
             output += "\nLicense type: " + license.type;
             output += "\nLicense url: " + license.url;
-            console.log(output)
+            console.info(output)
           }
-          console.log("License json available at: " + json.licenses);
+          console.info("License json available at: " + json.licenses);
         });
 
         for (url of json.js) {
