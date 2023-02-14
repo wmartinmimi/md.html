@@ -2,11 +2,13 @@
 
 ![Images](md.html_logo.png)
 
-A markdown viewer written as html to view markdown files in a browser.
+Convert markdown to html on the fly, client-based js pre-styled markdown viewer.
 
 Simple and easy to deploy.
 
 ## Quick deploy
+
+md.html pratically have a zero-config deploy!
 
 In your server root:
 
@@ -14,13 +16,21 @@ In your server root:
 curl https://raw.githubusercontent.com/wmartinmimi/md.html/main/md.html -o index.html
 ```
 
+And you can now view .md files in your server!
+
 More information on usage can be found [here](parent/howtouse.md)
+
+## Style
+
+Similar to Github, with slight differences here and there.
+
+md.html also already do latex rendering and syntax highlighting for you.
 
 ---
 
-Supported Markdown features:
+## Supported Markdown features
 
-## Headings
+### Headings
 
 Inline styles such as **bold**, _italic_, **_both_**, ~~strikethrough~~, `monospace`.
 
@@ -57,6 +67,8 @@ void main() {
 }
 ```
 
+Latex:
+
 $$c = \\pm\\sqrt{a^2 + b^2}$$
 
 1. Numbered lists
@@ -65,7 +77,7 @@ $$c = \\pm\\sqrt{a^2 + b^2}$$
 - Nested in other lists
   a. Lettered lists are an extension to the spec.
   b. They may be useful for legal documents.
-
+  
 2. Another entry in my numbered list.
 
 - [x] task
@@ -89,7 +101,7 @@ Images:
 
 ![Images](md.html_logo.png)
 
-Image links:
+Image in links:
 
 [![Images](md.html_logo.png)](md.html_logo.png)
 
@@ -105,6 +117,7 @@ These are the supported features:
 - Links
 - Inlined links
 - Images
+- Images in links
 - Headings
 - Lists (including lettered lists)
 - Bold
@@ -119,9 +132,8 @@ Extra features on md.html:
 
 - Dynamic title based on 1st `h1` heading
 - Correct 404 error by displaying the 404.html
-- No need for modified internal links, `relative/path.md` and `/absolute/path.md` works.
-- Subscript
-- SuperScript
+- No need for modified internal links, `relative/path.md` and `/absolute/path.md` works!
+- Custom save function to save as markdown or styled html for offline viewing
 
 Unsupported Markdown features at this time:
 
