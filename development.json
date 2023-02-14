@@ -1,6 +1,6 @@
 {
-  "version": "v2.2",
-  "version code": 3,
+  "version": "v2.3",
+  "version code": 4,
   "js": [
     "globalvar.js",
     "path-validate.js",

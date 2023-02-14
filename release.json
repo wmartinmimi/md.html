@@ -1,21 +1,21 @@
 {
-  "version": "v2.2",
-  "version code": 3,
+  "version": "v2.3",
+  "version code": 4,
   "js": [
-    "https://cdn.jsdelivr.net/gh/wmartinmimi/md.html@v2.2/globalvar.js",
-    "https://cdn.jsdelivr.net/gh/wmartinmimi/md.html@v2.2/path-validate.js",
+    "https://cdn.jsdelivr.net/gh/wmartinmimi/md.html@v2.3/globalvar.js",
+    "https://cdn.jsdelivr.net/gh/wmartinmimi/md.html@v2.3/path-validate.js",
     "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js",
     "https://cdn.jsdelivr.net/npm/showdown@v2.1.0/dist/showdown.min.js",
-    "https://cdn.jsdelivr.net/gh/wmartinmimi/md.html@v2.2/md.html.js",
-    "https://cdn.jsdelivr.net/gh/wmartinmimi/md.html@v2.2/save-popup.js",
+    "https://cdn.jsdelivr.net/gh/wmartinmimi/md.html@v2.3/md.html.js",
+    "https://cdn.jsdelivr.net/gh/wmartinmimi/md.html@v2.3/save-popup.js",
     "https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.js",
     "https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/contrib/auto-render.min.js",
-    "https://cdn.jsdelivr.net/gh/wmartinmimi/md.html@v2.2/renderer.js"
+    "https://cdn.jsdelivr.net/gh/wmartinmimi/md.html@v2.3/renderer.js"
   ],
   "css": [
-    "https://cdn.jsdelivr.net/gh/wmartinmimi/md.html@v2.2/md.html.css",
+    "https://cdn.jsdelivr.net/gh/wmartinmimi/md.html@v2.3/md.html.css",
     "https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css",
-    "https://cdn.jsdelivr.net/gh/wmartinmimi/md.html@v2.2/syntaxhighlight.css"
+    "https://cdn.jsdelivr.net/gh/wmartinmimi/md.html@v2.3/syntaxhighlight.css"
   ],
-  "licenses": "https://cdn.jsdelivr.net/gh/wmartinmimi/md.html@v2.2/licenses.json"
+  "licenses": "https://cdn.jsdelivr.net/gh/wmartinmimi/md.html@v2.3/licenses.json"
 }
