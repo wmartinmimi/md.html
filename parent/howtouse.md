@@ -13,7 +13,7 @@ Just put your README.md and other .md in.
 In your server root:
 
 ```bash
-curl https://raw.githubusercontent.com/wmartinmimi/md.html/main/md.html -o md.html
+curl https://raw.githubusercontent.com/wmartinmimi/md.html/main/md.html -o index.html
 ```
 
 Done!
@@ -25,16 +25,16 @@ you may need to disable the function.
 
 ## How to access
 
-If you placed ```md.html``` in your server root:
+If you placed ```md.html``` as ```index.html``` in your server root:
 
-1. Open ```<insert domain here>/md.html``` in browser
+1. Open ```<insert domain here>``` in browser
 2. Done!
 
 If you want to access other markdown files than index.md or README.md,
 there are 2 options:
 
 - Add links to them in index.md/README.md
-- ```<insert domain>/md.html?path=<absolute path to md>```
+- ```<insert domain>/index.html?path=<absolute path to md>```
 
 Example:
 

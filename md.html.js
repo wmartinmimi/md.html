@@ -28,13 +28,14 @@ function getPwd() {
 }
 
 async function followup_addition() {
-  // dynamic title
-  document.title = $("#markdown>h1").first().text();
-
   // clear up bootstrap
   $("body>script").remove();
 
   $("#markdown").ready(() => {
+
+    // dynamic title
+    document.title = $("#markdown>h1").first().text();
+
     linkfix();
     customLinkOpen();
   })

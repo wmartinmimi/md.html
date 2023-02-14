@@ -11,7 +11,7 @@ Simple and easy to deploy.
 In your server root:
 
 ```bash
-curl https://raw.githubusercontent.com/wmartinmimi/md.html/main/md.html -o md.html
+curl https://raw.githubusercontent.com/wmartinmimi/md.html/main/md.html -o index.html
 ```
 
 More information on usage can be found [here](parent/howtouse.md)
@@ -77,7 +77,7 @@ $$c = \\pm\\sqrt{a^2 + b^2}$$
 | Cell 4 | Cell 5 | Cell 6 |
 | Cell 7 | Cell 8 | Cell 9 |
 
-[Outside Links](https://github.com/adamvleggett/drawdown)
+[Outside Links](https://example.com)
 
 [absolute link](/parent/absolute.md)
 
