@@ -55,7 +55,6 @@ function buildPopup() {
     if (keys.ctrl && keys.s) {
       $(".popup").css("visibility", "visible");
       $("#popup-overlay").css("visibility", "visible");
-      $(".popup").css("top", window.scrollY + 'px');
       $("#popup-overlay").css("top", window.scrollY + 'px');
       $('body').css("overflowY", 'hidden');
     }
