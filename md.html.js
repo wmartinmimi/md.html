@@ -2,9 +2,7 @@
 
 // namespace issue
 let parser = (text) => {
-  let converter = new globalThis.showdown.Converter();
-  converter.setFlavor('github');
-  return converter.makeHtml(text);
+  return globalThis.marked.parse(text);
 };
 let $ = globalThis.jQuery;
 

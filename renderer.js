@@ -9,7 +9,7 @@ function addSyntaxHighlight() {
     if (code.className === "") {
       code.className = "language-plaintext"
     } else {
-      languages.push(code.className.split(" ")[0]);
+      languages.push(code.className.split("-")[1]);
     }
   }
   

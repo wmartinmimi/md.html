@@ -5,7 +5,7 @@
     "globalvar.js",
     "path-validate.js",
     "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js",
-    "https://cdn.jsdelivr.net/npm/showdown@v2.1.0/dist/showdown.min.js",
+    "https://cdn.jsdelivr.net/npm/marked/marked.min.js",
     "md.html.js",
     "save-popup.js",
     "https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.js",

@@ -60,14 +60,11 @@ void main() {
 $$c = \\pm\\sqrt{a^2 + b^2}$$
 
 1. Numbered lists
-
-- Unordered lists
-- Nested in other lists
-  a. Lettered lists are an extension to the spec.
-  b. They may be useful for legal documents.
-
 2. Another entry in my numbered list.
 
+- Unordered lists
+  - Nested entry
+  
 - [x] task
 - [ ] more task
 
@@ -106,30 +103,20 @@ These are the supported features:
 - Inlined links
 - Images
 - Headings
-- Lists (including lettered lists)
+- Lists
 - Bold
 - Italic
 - Strikethrough
 - Monospace
 - Horizontal rule
 - Tables
-- Latex equations
 
 Extra features on md.html:
 
 - Dynamic title based on 1st `h1` heading
 - Correct 404 error by displaying the 404.html
 - No need for modified internal links, `relative/path.md` and `/absolute/path.md` works.
-- Subscript
-- SuperScript
-
-Unsupported Markdown features at this time:
-
-- Line blocks
-- Definition lists
-- Footnotes
-- Twitter/Facebook/YouTube embed
-- Inline Latex equations
+- Latex equations
 
 ## Issues
 
@@ -145,7 +132,7 @@ You are welcomed to create pull requests and add/fix features reasonably. :>
 
 ## Credits
 
-- [showdownjs/showdown](https://github.com/showdownjs/showdown) (MIT License)
+- [markedjs/marked](https://github.com/markedjs/marked) (MIT License)
 - [KaTeX/KaTeX](https://github.com/KaTeX/KaTeX) (MIT License)
 - [jquery/jquery](https://github.com/jquery/jquery) (MIT License)
 - [jsdelivr/jsdelivr](https://github.com/jsdelivr/jsdelivr) (MIT License)
