@@ -26,9 +26,19 @@ Similar to Github, with slight differences here and there.
 
 md.html also already do latex rendering and syntax highlighting for you.
 
+## Extra feature
+
+- Dynamic title based on 1st `h1` heading
+- Custom save function to save as markdown or styled html for offline viewing
+- Correct 404 error by displaying the 404.html
+- No need for modified internal links, `relative/path.md` and `/absolute/path.md` works
+- Latex equations rendering
+
 ---
 
-## Supported Markdown features
+## Examples
+
+See this README.md rendered on <https://wmartinmimi.github.io/?path=/mdhtml/README.md>
 
 ### Headings
 
@@ -103,34 +113,6 @@ Image in links:
 [![Images](md.html_logo.png)](md.html_logo.png)
 
 ---
-
-### Summary
-
-These are the supported features:
-
-- Block quotes
-- Code blocks
-- Styled code blocks
-- Links
-- Inlined links
-- Images
-- Images in links
-- Headings
-- Lists
-- Bold
-- Italic
-- Strikethrough
-- Monospace
-- Horizontal rule
-- Tables
-
-Extra features on md.html:
-
-- Dynamic title based on 1st `h1` heading
-- Custom save function to save as markdown or styled html for offline viewing
-- Correct 404 error by displaying the 404.html
-- No need for modified internal links, `relative/path.md` and `/absolute/path.md` works.
-- Latex equations
 
 ## Issues
 
