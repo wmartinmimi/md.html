@@ -21,6 +21,7 @@
     --row-2n-color: #161b22;
     --table-color: #aaaaaa;
     --main-bg-color: #0d1117;
+    --link-color: #5d9de6;
     --quote-text-color: #88919b;
     --inline-code-color: #343941;
     color: #c9d1d9;
@@ -28,7 +29,7 @@
 }
 
 code {
-  font-family: "Courier New", Courier, monospace;
+  font-family: "Menlo", "Lucida Console", Courier, monospace;
   background-color: var(--inline-code-color);
   padding: 3px;
   padding-left: 5px;
