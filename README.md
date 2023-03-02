@@ -2,11 +2,13 @@
 
 ![Images](md.html_logo.png)
 
-A markdown viewer written as html to view markdown files in a browser.
+Convert markdown to html on the fly, client-based js pre-styled markdown viewer.
 
 Simple and easy to deploy.
 
 ## Quick deploy
+
+md.html pratically have a zero-config deploy!
 
 In your server root:
 
@@ -14,13 +16,21 @@ In your server root:
 curl https://raw.githubusercontent.com/wmartinmimi/md.html/main/md.html -o index.html
 ```
 
+And you can now view .md files in your server!
+
 More information on usage can be found [here](parent/howtouse.md)
+
+## Style
+
+Similar to Github, with slight differences here and there.
+
+md.html also already do latex rendering and syntax highlighting for you.
 
 ---
 
-Supported Markdown features:
+## Supported Markdown features
 
-## Headings
+### Headings
 
 Inline styles such as **bold**, _italic_, **_both_**, ~~strikethrough~~, `monospace`.
 
@@ -57,6 +67,8 @@ void main() {
 }
 ```
 
+Latex:
+
 $$c = \\pm\\sqrt{a^2 + b^2}$$
 
 1. Numbered lists
@@ -86,7 +98,7 @@ Images:
 
 ![Images](md.html_logo.png)
 
-Image links:
+Image in links:
 
 [![Images](md.html_logo.png)](md.html_logo.png)
 
@@ -102,6 +114,7 @@ These are the supported features:
 - Links
 - Inlined links
 - Images
+- Images in links
 - Headings
 - Lists
 - Bold
