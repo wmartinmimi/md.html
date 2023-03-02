@@ -127,6 +127,7 @@ These are the supported features:
 Extra features on md.html:
 
 - Dynamic title based on 1st `h1` heading
+- Custom save function to save as markdown or styled html for offline viewing
 - Correct 404 error by displaying the 404.html
 - No need for modified internal links, `relative/path.md` and `/absolute/path.md` works.
 - Latex equations
