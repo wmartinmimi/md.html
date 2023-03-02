@@ -92,7 +92,7 @@ Image links:
 
 ---
 
-### Summary...
+### Summary
 
 These are the supported features:
 
