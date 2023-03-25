@@ -20,6 +20,28 @@ And you can now view .md files in your server!
 
 More information on usage can be found [here](parent/howtouse.md)
 
+## Updating
+
+The md.html should dynamically fetch the latest required code, meaning that usually no manual intervention is required.
+However, the file ```md.html``` itself would not automatically update itself and therefore requires manual intervention.
+Warning to update the ```md.html``` file will be displayed in the console starting from ```v2.6```. (Error 1)
+
+To update the ```md.html``` file, see **Quick Deploy** and follow the normal download procedure.
+
+If you want to disable automatic update, after downloading, modifiy the following line in ```flags section```.
+
+from:
+
+```js
+let auto_update = true;
+```
+
+to:
+
+```js
+let auto_update = false;
+```
+
 ## Style
 
 Similar to Github, with slight differences here and there.
@@ -35,6 +57,13 @@ md.html also already do latex rendering and syntax highlighting for you.
 - Latex equations rendering
 
 ---
+
+## Error Codes
+
+```Error 1```
+
+Update of ```md.html``` file required.
+See **Quick deploy** to download the latest version.
 
 ## Examples
 
