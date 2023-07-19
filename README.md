@@ -67,7 +67,7 @@ See **Quick deploy** to download the latest version.
 
 ## Examples
 
-See this README.md rendered on <https://wmartinmimi.github.io/?path=/mdhtml/README.md>
+See this README.md rendered on <https://wmartinmimi.github.io/mdhtml/md.html?path=/mdhtml/README.md>
 
 ### Headings
 
